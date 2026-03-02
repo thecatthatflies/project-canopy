@@ -1,7 +1,0 @@
-<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1600" height="900" fill="#0A2519"/>
-  <path d="M-20 650C150 610 290 640 430 700C580 765 720 790 900 730C1060 675 1200 640 1360 675C1460 700 1540 710 1620 695V900H-20V650Z" fill="#183A28"/>
-  <path d="M-40 490C160 450 300 500 470 560C640 620 820 620 1030 550C1220 485 1420 475 1640 530" stroke="#79CDB7" stroke-opacity="0.5" stroke-width="16" stroke-linecap="round"/>
-  <path d="M-30 525C170 490 320 535 510 595C690 650 910 655 1120 590C1320 530 1490 530 1630 565" stroke="#A2E0D0" stroke-opacity="0.36" stroke-width="8" stroke-linecap="round"/>
-  <path d="M0 565C170 520 340 560 520 620C690 680 900 695 1100 640C1310 580 1460 585 1600 625V900H0V565Z" fill="#112E20" fill-opacity="0.9"/>
-</svg>

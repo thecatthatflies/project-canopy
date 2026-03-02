@@ -14,8 +14,7 @@
     "@fortawesome/fontawesome-free": "^7.2.0",
     "express": "^5.2.1",
     "gsap": "^3.14.2",
-    "lenis": "^1.3.17",
-    "three": "^0.166.1"
+    "lenis": "^1.3.17"
   },
   "devDependencies": {
     "prettier": "^3.8.1"

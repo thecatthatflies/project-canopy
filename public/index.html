@@ -3,173 +3,868 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Project Canopy | Immersive Jungle Route</title>
+    <title>PROJECT CANOPY - Clouded Leopard Recovery Plan</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="icon" href="assets/favicon.jpg" type="image/jpeg" />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Merriweather:wght@400;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
       rel="stylesheet"
     />
     <link
       rel="stylesheet"
       href="/vendor/@fortawesome/fontawesome-free/css/all.min.css"
     />
-    <link rel="stylesheet" href="./css/style.css" />
+    <link rel="stylesheet" href="css/style.css" />
   </head>
-  <body class="audio-locked booting">
-    <div class="boot-loader" role="status" aria-live="polite">
-      <div class="boot-loader__inner">
-        <p class="boot-loader__label">Project Canopy</p>
-        <p class="boot-loader__state" data-loader-state>
-          Initializing rainforest simulation...
-        </p>
-        <div class="boot-loader__track" aria-hidden="true">
-          <span class="boot-loader__bar" data-loader-bar></span>
-        </div>
+  <body>
+    <nav class="nav">
+      <a href="#" class="nav__logo">PROJECT CANOPY</a>
+      <div class="nav__links">
+        <a href="#introduction"
+          ><i class="fa-solid fa-circle-info"></i>Introduction</a
+        >
+        <a href="#range"><i class="fa-solid fa-map-location-dot"></i>Range</a>
+        <a href="#goals"><i class="fa-solid fa-bullseye"></i>Goals</a>
+        <a href="#solutions"><i class="fa-solid fa-lightbulb"></i>Solutions</a>
+        <a href="#timeline"><i class="fa-solid fa-clock"></i>Timeline</a>
+        <a href="#funding"
+          ><i class="fa-solid fa-hand-holding-dollar"></i>Funding</a
+        >
+        <a href="#success"><i class="fa-solid fa-chart-line"></i>Success</a>
+        <a href="#sources"><i class="fa-solid fa-book-open"></i>Sources</a>
       </div>
-    </div>
+    </nav>
 
-    <div id="experience" aria-hidden="true">
-      <div class="fallback-bg fallback-bg--back"></div>
-      <div class="fallback-bg fallback-bg--mid"></div>
-      <div class="fallback-bg fallback-bg--front"></div>
-      <div class="fallback-bg fallback-bg--mist"></div>
-      <div class="fallback-bg fallback-bg--glow"></div>
-      <div class="fallback-bg fallback-bg--shadow"></div>
-    </div>
-    <div class="vignette" aria-hidden="true"></div>
-
-    <button
-      class="sound-fab"
-      type="button"
-      aria-pressed="true"
-      aria-label="Toggle ambient sound"
-    >
-      <i class="fa-solid fa-volume-high" aria-hidden="true"></i>
-    </button>
-
-    <aside class="tick-nav" aria-label="Section navigation">
-      <a class="tick-nav__item is-active" href="#entry" aria-label="Perimeter">
-        <span class="tick-nav__line"></span>
-        <span class="tick-nav__text">Perimeter</span>
-      </a>
-      <a class="tick-nav__item" href="#threat" aria-label="Threats">
-        <span class="tick-nav__line"></span>
-        <span class="tick-nav__text">Threats</span>
-      </a>
-      <a class="tick-nav__item" href="#patrol" aria-label="Patrol">
-        <span class="tick-nav__line"></span>
-        <span class="tick-nav__text">Patrol</span>
-      </a>
-      <a class="tick-nav__item" href="#restore" aria-label="Restore">
-        <span class="tick-nav__line"></span>
-        <span class="tick-nav__text">Restore</span>
-      </a>
-      <a class="tick-nav__item" href="#community" aria-label="Community">
-        <span class="tick-nav__line"></span>
-        <span class="tick-nav__text">Community</span>
-      </a>
-      <a class="tick-nav__item" href="#mission" aria-label="Mission">
-        <span class="tick-nav__line"></span>
-        <span class="tick-nav__text">Mission</span>
-      </a>
-    </aside>
+    <header class="hero" id="hero">
+      <div class="hero__overlay"></div>
+      <div class="hero__content">
+        <p class="hero__eyebrow">Endangered Species Recovery Plan</p>
+        <h1 class="hero__title">Saving the Clouded Leopard</h1>
+        <p class="hero__subtitle">
+          A comprehensive, science-backed strategy to protect
+          <em>Neofelis nebulosa</em> and restore its vanishing forest habitat
+          across Southeast Asia.
+        </p>
+        <a href="#introduction" class="hero__cta">
+          Explore the Plan <i class="fa-solid fa-chevron-down"></i>
+        </a>
+      </div>
+      <div class="hero__scroll-indicator">
+        <div class="hero__scroll-line"></div>
+      </div>
+    </header>
 
     <main>
-      <section class="scene" id="entry">
-        <div class="scene__copy">
-          <p class="scene__index">01 / Perimeter Entry</p>
-          <h1>Step into the canopy route.</h1>
+      <section class="section" id="introduction">
+        <div class="section__header">
+          <span class="section__number">01</span>
+          <h2 class="section__title">Introduction</h2>
+        </div>
+
+        <div class="content-block">
+          <h3>What Is Biodiversity?</h3>
           <p>
-            Scroll forward to move deeper through the jungle environment and map
-            each ecosystem layer to a real conservation action.
+            Biodiversity is the variety of all living organisms within a given
+            ecosystem, encompassing genetic diversity within species,
+            species-level diversity across populations, and ecosystem-level
+            diversity across landscapes. High biodiversity ensures ecosystem
+            resilience: forests cycle nutrients, wetlands filter water, and
+            pollinators sustain agriculture. When a single species disappears,
+            an intricate web of ecological relationships can unravel — food
+            chains shift, habitats degrade, and entire ecosystems face collapse.
+            Protecting biodiversity is therefore not merely a moral imperative
+            but an economic and scientific necessity.
           </p>
         </div>
-      </section>
 
-      <section class="scene" id="threat">
-        <div class="scene__copy">
-          <p class="scene__index">02 / Threat Corridor</p>
-          <h2>Identify pressure before populations collapse.</h2>
-          <p>
-            This zone targets poaching routes, fragmented forest edges, and
-            illegal access paths where intervention has highest impact.
-          </p>
-        </div>
-      </section>
-
-      <section class="scene" id="patrol">
-        <div class="scene__copy">
-          <p class="scene__index">03 / Ranger Grid</p>
-          <h2>Deploy rangers where signals spike.</h2>
-          <p>
-            Daily patrol loops and camera intelligence remove traps fast and
-            keep high-risk habitats under constant watch.
-          </p>
-        </div>
-      </section>
-
-      <section class="scene" id="restore">
-        <div class="scene__copy">
-          <p class="scene__index">04 / Corridor Build</p>
-          <h2>Reconnect movement through restored canopy.</h2>
-          <p>
-            Reforested corridors and riparian stabilization enable safer
-            wildlife crossings between isolated habitat blocks.
-          </p>
-        </div>
-      </section>
-
-      <section class="scene" id="community">
-        <div class="scene__copy">
-          <p class="scene__index">05 / Community Alliance</p>
-          <h2>Build local stewardship that lasts.</h2>
-          <p>
-            Conservation success is long-term only when nearby communities are
-            funded, trained, and integrated into protection decisions.
-          </p>
-        </div>
-      </section>
-
-      <section class="scene" id="mission">
-        <div class="scene__copy scene__copy--mission">
-          <p class="scene__index">06 / Mission Desk</p>
-          <h2>Purpose: stabilize clouded leopard populations.</h2>
-          <p>
-            This project exists to expand patrol coverage, restore canopy
-            corridors, and shift high-pressure habitats toward measurable
-            recovery.
-          </p>
-          <div class="mission-actions">
-            <a href="#" class="mission-btn"
-              ><i class="fa-solid fa-donate"></i>Fund Patrol Operations</a
-            >
-            <a href="#" class="mission-btn mission-btn--ghost"
-              ><i class="fa-solid fa-seedling"></i>Support Reforestation</a
-            >
-            <a href="#" class="mission-btn mission-btn--ghost"
-              ><i class="fa-solid fa-users"></i>Back Community Programs</a
+        <div class="content-block species-intro">
+          <div class="species-intro__image">
+            <img
+              src="/assets/images/leopard.jpg"
+              alt="A clouded leopard resting on a mossy tree branch in a tropical forest"
+            />
+            <span class="image-caption"
+              >Clouded leopard (<em>Neofelis nebulosa</em>) in its natural
+              canopy habitat.</span
             >
           </div>
+          <div class="species-intro__text">
+            <h3>Meet the Clouded Leopard</h3>
+            <p>
+              The clouded leopard (<em>Neofelis nebulosa</em>) is a medium-sized
+              wild cat native to the dense tropical and subtropical forests of
+              Southeast Asia. Named for the large, cloud-shaped blotches on its
+              coat, it is the smallest of the "big cats" and one of the most
+              elusive. Adults weigh between 11 and 23 kg (25–50 lb) and measure
+              roughly 70–105 cm in body length, with a tail nearly as long as
+              their body.
+            </p>
+            <p>
+              Clouded leopards are exceptional climbers — their ankles rotate
+              backward, allowing them to descend trees headfirst and even hang
+              from branches by their hind feet. They have the longest canine
+              teeth relative to skull size of any living cat, earning them
+              comparisons to the saber-toothed cats of prehistory.
+            </p>
+          </div>
+        </div>
+
+        <div class="stats-row">
+          <div class="stat-card">
+            <span class="stat-card__number">&lt;10,000</span>
+            <span class="stat-card__label"
+              >Estimated Remaining in the Wild</span
+            >
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__number">2008</span>
+            <span class="stat-card__label"
+              >Listed as Vulnerable by the IUCN</span
+            >
+          </div>
+          <div class="stat-card">
+            <span class="stat-card__number">~30%</span>
+            <span class="stat-card__label"
+              >Habitat Lost in the Past 20 Years</span
+            >
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3><i class="fa-solid fa-tree"></i> Habitat</h3>
+          <p>
+            Clouded leopards inhabit primary evergreen tropical rainforest,
+            seasonally dry forest, and secondary logged forest from the
+            Himalayan foothills to mainland Southeast Asia and Borneo. They
+            prefer dense canopy cover at elevations up to 2,500 m, where the
+            continuous tree-crown layer allows arboreal movement. Fragmentation
+            — driven by logging, agriculture, and road building — isolates
+            populations, reduces genetic diversity, and increases human-wildlife
+            conflict.
+          </p>
+        </div>
+
+        <div class="content-block">
+          <h3><i class="fa-solid fa-paw"></i> Breeding &amp; Reproduction</h3>
+          <p>
+            Clouded leopards reach sexual maturity at approximately two years,
+            with a gestation period of 85–93 days. Litters typically contain 1–5
+            cubs, though 2–3 is most common. Cubs are born blind and helpless,
+            weighing about 140–280 g, and open their eyes at roughly 10 days.
+            They are weaned by five months and begin exploring independently by
+            nine months.
+          </p>
+          <p>
+            Breeding in captivity presents significant challenges: males can be
+            highly aggressive toward unfamiliar females, and pair compatibility
+            must be carefully managed. The Species Survival Plan (SSP) has found
+            that introducing pairs at a young age dramatically improves
+            compatibility and reproductive success.
+          </p>
+        </div>
+
+        <div class="content-block">
+          <h3><i class="fa-solid fa-utensils"></i> Predators &amp; Prey</h3>
+          <div class="two-col">
+            <div>
+              <h4>Prey</h4>
+              <p>
+                Clouded leopards are opportunistic carnivores. Their diet
+                includes primates (macaques, gibbons, langurs), small deer
+                (muntjac, mouse deer), wild boar, birds, porcupines, and
+                squirrels. Their arboreal agility allows them to ambush prey in
+                the canopy — an ecological niche few other predators fill.
+              </p>
+            </div>
+            <div>
+              <h4>Predators &amp; Competitors</h4>
+              <p>
+                Adult clouded leopards have few natural predators, though
+                tigers, leopards, and dholes may kill them in areas of overlap.
+                Cubs are vulnerable to large raptors and pythons. Their primary
+                threat, however, is anthropogenic: humans through poaching,
+                habitat destruction, and the illegal wildlife trade.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="content-block">
+          <h3>Why Are Clouded Leopards Endangered?</h3>
+          <p>
+            The clouded leopard is classified as <strong>Vulnerable</strong> on
+            the IUCN Red List, with populations declining across virtually all
+            of their range. Four primary drivers push this species toward
+            extinction:
+          </p>
+        </div>
+
+        <div class="threat-cards">
+          <div class="threat-card">
+            <div class="threat-card__icon">
+              <i class="fa-solid fa-tree"></i>
+            </div>
+            <h4>Habitat Loss &amp; Fragmentation</h4>
+            <p>
+              Southeast Asia has one of the highest deforestation rates
+              globally. Between 2001 and 2019, the region lost over 61 million
+              hectares of tree cover — largely to palm oil plantations, rubber
+              farming, and logging. This shatters the continuous canopy that
+              clouded leopards rely on for movement and hunting.
+            </p>
+          </div>
+          <div class="threat-card">
+            <div class="threat-card__icon">
+              <i class="fa-solid fa-crosshairs"></i>
+            </div>
+            <h4>Poaching &amp; Illegal Trade</h4>
+            <p>
+              Clouded leopard pelts, bones, and teeth are sold in illegal
+              wildlife markets. Their parts are used in traditional medicine and
+              as luxury decorative items. Snares set for other animals also
+              incidentally kill or injure clouded leopards.
+            </p>
+          </div>
+          <div class="threat-card">
+            <div class="threat-card__icon">
+              <i class="fa-solid fa-building"></i>
+            </div>
+            <h4>Human Encroachment</h4>
+            <p>
+              As human settlements expand into forested areas, clouded leopards
+              are pushed into smaller, more isolated patches. They may prey on
+              livestock, leading to retaliatory killings. Roads fragment habitat
+              corridors and increase roadkill mortality.
+            </p>
+          </div>
+          <div class="threat-card">
+            <div class="threat-card__icon">
+              <i class="fa-solid fa-temperature-arrow-up"></i>
+            </div>
+            <h4>Climate Change</h4>
+            <p>
+              Rising temperatures and shifting rainfall patterns alter forest
+              composition and prey availability. Montane forests — critical
+              refugia — may shrink as temperature zones shift upward, reducing
+              habitat at exactly the elevations clouded leopards depend upon.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--dark" id="range">
+        <div class="section__header">
+          <span class="section__number">02</span>
+          <h2 class="section__title">Geographic Range</h2>
+        </div>
+
+        <div class="content-block">
+          <p>
+            The clouded leopard's range extends from the eastern Himalayas
+            through mainland Southeast Asia to southern China. Historically, the
+            species was found across a vast swathe of tropical and subtropical
+            forest; today, populations are fragmented and confined to
+            increasingly isolated forest blocks. The Sunda clouded leopard (<em
+              >Neofelis diardi</em
+            >), found on Borneo and Sumatra, was recognized as a separate
+            species in 2006.
+          </p>
+        </div>
+
+        <div class="map-container">
+          <img
+            class="range-map"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Clouded_Leopard_distribution.png/500px-Clouded_Leopard_distribution.png"
+            alt="Map showing the geographic range of the clouded leopard across Southeast Asia"
+          />
+          <span class="image-caption"
+            >"Distribution of the clouded leopard." Source: Wikimedia
+            Commons.</span
+          >
+        </div>
+
+        <div class="range-countries">
+          <span class="range-tag"
+            ><i class="fa-solid fa-location-dot"></i> Nepal</span
+          >
+          <span class="range-tag"
+            ><i class="fa-solid fa-location-dot"></i> Bhutan</span
+          >
+          <span class="range-tag"
+            ><i class="fa-solid fa-location-dot"></i> India</span
+          >
+          <span class="range-tag"
+            ><i class="fa-solid fa-location-dot"></i> Bangladesh</span
+          >
+          <span class="range-tag"
+            ><i class="fa-solid fa-location-dot"></i> Myanmar</span
+          >
+          <span class="range-tag"
+            ><i class="fa-solid fa-location-dot"></i> Thailand</span
+          >
+          <span class="range-tag"
+            ><i class="fa-solid fa-location-dot"></i> Laos</span
+          >
+          <span class="range-tag"
+            ><i class="fa-solid fa-location-dot"></i> Vietnam</span
+          >
+          <span class="range-tag"
+            ><i class="fa-solid fa-location-dot"></i> Cambodia</span
+          >
+          <span class="range-tag"
+            ><i class="fa-solid fa-location-dot"></i> Malaysia</span
+          >
+          <span class="range-tag"
+            ><i class="fa-solid fa-location-dot"></i> China</span
+          >
+        </div>
+      </section>
+
+      <section class="section" id="goals">
+        <div class="section__header">
+          <span class="section__number">03</span>
+          <h2 class="section__title">Goals &amp; Objectives</h2>
+        </div>
+
+        <div class="content-block">
+          <p>
+            The overarching goal of this recovery plan is to stabilize and
+            ultimately grow the wild clouded leopard population to a minimum
+            viable level of 15,000 individuals across connected habitat
+            corridors within 25 years. This target demands coordinated action
+            across governments, NGOs, local communities, and the global
+            scientific community.
+          </p>
+        </div>
+
+        <div class="goals-grid">
+          <div class="goal-card">
+            <div class="goal-card__number">01</div>
+            <h4>Protect Habitat</h4>
+            <p>
+              Secure and restore 50,000 km² of connected forest across the
+              species' core range.
+            </p>
+          </div>
+          <div class="goal-card">
+            <div class="goal-card__number">02</div>
+            <h4>Eliminate Poaching</h4>
+            <p>
+              Reduce poaching-related mortality by 90% through enforcement and
+              community engagement.
+            </p>
+          </div>
+          <div class="goal-card">
+            <div class="goal-card__number">03</div>
+            <h4>Sustain Genetic Diversity</h4>
+            <p>
+              Maintain a genetically viable captive population of 120+ breeding
+              individuals across AZA-accredited facilities.
+            </p>
+          </div>
+          <div class="goal-card">
+            <div class="goal-card__number">04</div>
+            <h4>Engage Communities</h4>
+            <p>
+              Build local economies that benefit from leopard conservation,
+              reducing human-wildlife conflict.
+            </p>
+          </div>
+          <div class="goal-card">
+            <div class="goal-card__number">05</div>
+            <h4>Advance Research</h4>
+            <p>
+              Deploy camera-trap networks and GPS collaring to map population
+              dynamics and habitat use.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--dark" id="solutions">
+        <div class="section__header">
+          <span class="section__number">04</span>
+          <h2 class="section__title">Solutions</h2>
+        </div>
+
+        <div class="content-block">
+          <h3>Habitat Protection &amp; Restoration</h3>
+          <p>
+            The single most impactful action is protecting existing primary
+            forest. This involves strengthening protected-area legislation,
+            funding ranger patrols, and expanding national parks in key
+            clouded-leopard corridors such as the Tenasserim Hills (Thailand–
+            Myanmar border) and the forests of northern Laos. Beyond protection,
+            active reforestation — planting native dipterocarp and fig species —
+            will rebuild canopy bridges between isolated fragments. Wildlife
+            corridors at least 2 km wide should connect reserves, allowing gene
+            flow and natural dispersal. Because clouded leopards are arboreal,
+            these corridors must emphasize tall, continuous canopy rather than
+            simple ground-level plantings.
+          </p>
+        </div>
+
+        <div class="content-block">
+          <h3>Anti-Poaching &amp; Law Enforcement</h3>
+          <p>
+            Effective anti-poaching requires a layered approach. Trained ranger
+            units equipped with SMART (Spatial Monitoring and Reporting Tool)
+            technology will patrol high-risk zones. Intelligence networks will
+            target the criminal syndicates that drive the illegal wildlife
+            trade. Community informant programs — offering financial incentives
+            for information leading to arrests — will deter local poaching.
+            Penalties for wildlife trafficking must be strengthened:
+            international cooperation through CITES enforcement is essential to
+            shut down cross-border trade.
+          </p>
+        </div>
+
+        <div class="content-block">
+          <h3>Captive Breeding &amp; Genetic Management</h3>
+          <p>
+            The Clouded Leopard SSP coordinates breeding across approximately 70
+            clouded leopards in North American zoos. Because male aggression is
+            a serious barrier, the SSP now pairs animals before 12 months of age
+            and houses pairs in large, enriched enclosures with climbing
+            structures that mimic natural canopy. Artificial insemination and
+            genome banking further safeguard genetic diversity. The long-term
+            goal is to build a self-sustaining captive population that could
+            support reintroduction into restored habitat — a process that
+            demands rigorous behavioral conditioning, soft-release protocols,
+            and post-release monitoring.
+          </p>
+        </div>
+
+        <div class="content-block">
+          <h3>Accounting for Behavior &amp; Ecology</h3>
+          <p>
+            Any recovery strategy must respect the biology of the species.
+            Clouded leopards are solitary, nocturnal, and primarily arboreal —
+            solutions that assume they will cross open ground (like ground-level
+            wildlife crossings) are inadequate. Corridor design must include
+            continuous canopy and minimize edge effects. Protected areas must be
+            large enough to support viable home ranges (25–50 km² per
+            individual). Breeding programs must pair animals young, provide
+            vertical space, and minimize stress — loud visitors and concrete
+            enclosures are counterproductive.
+          </p>
+        </div>
+
+        <div class="content-block">
+          <h3>Economic Justification</h3>
+          <p>
+            The estimated cost of this recovery program over 25 years is
+            approximately $260 million — a significant investment. However, the
+            forests that clouded leopards inhabit provide ecosystem services
+            worth tens of billions of dollars annually: carbon sequestration,
+            watershed protection, flood prevention, and non-timber forest
+            products. A landmark 2019 study in <em>Nature</em> valued Southeast
+            Asian tropical forests at approximately $1,500 per hectare per year
+            in ecosystem services. By protecting 50,000 km², this program would
+            conserve roughly $7.5 billion in annual ecosystem value — returning
+            over $28 for every $1 invested. Beyond economics, the ecotourism
+            potential is substantial: community-based tourism programs in
+            clouded leopard habitat in Borneo already generate significant local
+            income.
+          </p>
+        </div>
+      </section>
+
+      <section class="section" id="timeline">
+        <div class="section__header">
+          <span class="section__number">05</span>
+          <h2 class="section__title">Timeline</h2>
+        </div>
+
+        <div class="timeline-visual">
+          <div class="timeline-phase">
+            <span class="timeline-phase__marker">Phase I</span>
+            <p class="timeline-phase__period">2027 – 2032</p>
+            <h4>Foundation &amp; Assessment</h4>
+            <ul>
+              <li>
+                Complete range-wide population survey using camera traps and
+                eDNA sampling.
+              </li>
+              <li>
+                Establish 10 new protected-area expansions totaling 8,000 km².
+              </li>
+              <li>Deploy SMART patrols across 15 priority landscapes.</li>
+              <li>
+                Begin captive-breeding expansion: increase SSP population to 100
+                individuals.
+              </li>
+              <li>
+                Launch community livelihood programs in 50 buffer-zone villages.
+              </li>
+            </ul>
+          </div>
+
+          <div class="timeline-phase">
+            <span class="timeline-phase__marker">Phase II</span>
+            <p class="timeline-phase__period">2033 – 2040</p>
+            <h4>Active Recovery</h4>
+            <ul>
+              <li>
+                Complete forest corridor plantings connecting 5 major reserves.
+              </li>
+              <li>
+                Reduce snare density by 80% in target zones through patrol and
+                removal.
+              </li>
+              <li>
+                Initiate pilot reintroduction of captive-bred individuals into
+                restored habitat.
+              </li>
+              <li>
+                Establish transboundary conservation agreements
+                (Thailand–Myanmar, Laos–Vietnam).
+              </li>
+              <li>
+                Scale ecotourism programs to 100,000 visitors/year, generating
+                $25M annually for communities.
+              </li>
+            </ul>
+          </div>
+
+          <div class="timeline-phase">
+            <span class="timeline-phase__marker">Phase III</span>
+            <p class="timeline-phase__period">2041 – 2051</p>
+            <h4>Population Growth &amp; Self-Sustaining Ecosystems</h4>
+            <ul>
+              <li>Achieve target population of 15,000 wild individuals.</li>
+              <li>
+                Confirm genetic connectivity across all major habitat blocks via
+                DNA analysis.
+              </li>
+              <li>
+                Transition patrol funding to national government budgets for
+                long-term sustainability.
+              </li>
+              <li>
+                Publish 25-year findings and refine global felid conservation
+                models.
+              </li>
+              <li>
+                Petition IUCN for reclassification from Vulnerable to Near
+                Threatened.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--dark" id="funding">
+        <div class="section__header">
+          <span class="section__number">06</span>
+          <h2 class="section__title">Funding &amp; Resources</h2>
+        </div>
+
+        <div class="content-block">
+          <p>
+            Recovery at this scale requires sustained, multi-source funding. The
+            table below estimates costs over the full 25-year implementation
+            period. Funding will be sourced from international conservation
+            grants (GEF, CEPF), bilateral aid, carbon-credit programs, and
+            private philanthropy.
+          </p>
+        </div>
+
+        <div class="funding-table-wrapper">
+          <table class="funding-table">
+            <thead>
+              <tr>
+                <th>Resource</th>
+                <th>Description</th>
+                <th>Estimated Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <i class="fa-solid fa-shield-halved"></i> Protected Areas
+                </td>
+                <td>
+                  Land acquisition, legal designation, infrastructure for 10 new
+                  reserves.
+                </td>
+                <td>$80 M</td>
+              </tr>
+              <tr>
+                <td><i class="fa-solid fa-user-shield"></i> Ranger Programs</td>
+                <td>
+                  Salaries, equipment, SMART technology for 500+ rangers across
+                  15 landscapes.
+                </td>
+                <td>$55 M</td>
+              </tr>
+              <tr>
+                <td><i class="fa-solid fa-seedling"></i> Reforestation</td>
+                <td>
+                  Native-species plantings, wildlife corridor construction,
+                  nurseries.
+                </td>
+                <td>$40 M</td>
+              </tr>
+              <tr>
+                <td><i class="fa-solid fa-dna"></i> Captive Breeding</td>
+                <td>
+                  SSP expansion, enclosure construction, veterinary care, genome
+                  banking.
+                </td>
+                <td>$30 M</td>
+              </tr>
+              <tr>
+                <td>
+                  <i class="fa-solid fa-microscope"></i> Research &amp;
+                  Monitoring
+                </td>
+                <td>
+                  Camera traps, GPS collars, eDNA kits, satellite imagery, data
+                  platforms.
+                </td>
+                <td>$25 M</td>
+              </tr>
+              <tr>
+                <td>
+                  <i class="fa-solid fa-people-group"></i> Community Programs
+                </td>
+                <td>
+                  Livelihood training, ecotourism development, human-wildlife
+                  conflict mitigation.
+                </td>
+                <td>$20 M</td>
+              </tr>
+              <tr>
+                <td>
+                  <i class="fa-solid fa-gavel"></i> Policy &amp; Enforcement
+                </td>
+                <td>
+                  Legal reform advocacy, CITES enforcement, cross-border
+                  cooperation.
+                </td>
+                <td>$10 M</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="2"><strong>Total Estimated Investment</strong></td>
+                <td><strong>$260 M</strong></td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </section>
+
+      <section class="section" id="success">
+        <div class="section__header">
+          <span class="section__number">07</span>
+          <h2 class="section__title">Measuring Success</h2>
+        </div>
+
+        <div class="content-block">
+          <p>
+            Success must be measured not by effort alone but by measurable
+            ecological outcomes. The following metrics will be assessed on a
+            rolling basis and reported annually to all stakeholders.
+          </p>
+        </div>
+
+        <div class="success-methods">
+          <div class="success-card">
+            <div class="success-card__icon">
+              <i class="fa-solid fa-camera"></i>
+            </div>
+            <h4>Camera-Trap Surveys</h4>
+            <p>
+              Standardized camera-trap grids across all 15 priority landscapes
+              will estimate population density, occupancy rates, and individual
+              identification via coat-pattern recognition.
+            </p>
+            <p class="success-card__frequency">
+              <i class="fa-solid fa-clock"></i> Every 2 years
+            </p>
+          </div>
+
+          <div class="success-card">
+            <div class="success-card__icon">
+              <i class="fa-solid fa-dna"></i>
+            </div>
+            <h4>Genetic Monitoring</h4>
+            <p>
+              Non-invasive genetic sampling (fecal DNA, hair snares) will track
+              effective population size, inbreeding coefficients, and gene flow
+              between fragments.
+            </p>
+            <p class="success-card__frequency">
+              <i class="fa-solid fa-clock"></i> Every 3 years
+            </p>
+          </div>
+
+          <div class="success-card">
+            <div class="success-card__icon">
+              <i class="fa-solid fa-satellite"></i>
+            </div>
+            <h4>Habitat Monitoring</h4>
+            <p>
+              Annual satellite imagery analysis will quantify forest cover,
+              canopy height, and corridor connectivity using Global Forest Watch
+              and LiDAR data.
+            </p>
+            <p class="success-card__frequency">
+              <i class="fa-solid fa-clock"></i> Annually
+            </p>
+          </div>
+
+          <div class="success-card">
+            <div class="success-card__icon">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h4>Anti-Poaching Metrics</h4>
+            <p>
+              Track patrol effort (km patrolled), snares removed, arrests made,
+              and prosecution rates. Compare poaching incident trends
+              year-over-year.
+            </p>
+            <p class="success-card__frequency">
+              <i class="fa-solid fa-clock"></i> Quarterly
+            </p>
+          </div>
+
+          <div class="success-card">
+            <div class="success-card__icon">
+              <i class="fa-solid fa-horse"></i>
+            </div>
+            <h4>Captive Population Health</h4>
+            <p>
+              Monitor SSP studbook metrics: births, deaths, genetic diversity
+              index, pair compatibility scores, and cub survival rates.
+            </p>
+            <p class="success-card__frequency">
+              <i class="fa-solid fa-clock"></i> Annually
+            </p>
+          </div>
+
+          <div class="success-card">
+            <div class="success-card__icon">
+              <i class="fa-solid fa-chart-line"></i>
+            </div>
+            <h4>Community Impact</h4>
+            <p>
+              Survey household income changes, attitudes toward wildlife, and
+              ecotourism revenue in buffer-zone communities to ensure local
+              buy-in.
+            </p>
+            <p class="success-card__frequency">
+              <i class="fa-solid fa-clock"></i> Every 2 years
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section--dark" id="sources">
+        <div class="section__header">
+          <span class="section__number">08</span>
+          <h2 class="section__title">Sources Cited</h2>
+        </div>
+
+        <div class="content-block sources-list">
+          <ol>
+            <li>
+              Grassman, L., Lynam, A., Mohamad, S., et al. (2017).
+              <em>Neofelis nebulosa.</em> The IUCN Red List of Threatened
+              Species.
+              <a
+                href="https://www.iucnredlist.org/species/14519/97215090"
+                target="_blank"
+                rel="noopener"
+                >iucnredlist.org</a
+              >
+            </li>
+            <li>
+              World Wildlife Fund. "Clouded Leopard."
+              <a
+                href="https://www.worldwildlife.org/species/clouded-leopard"
+                target="_blank"
+                rel="noopener"
+                >worldwildlife.org</a
+              >
+            </li>
+            <li>
+              Smithsonian's National Zoo &amp; Conservation Biology Institute.
+              "Clouded Leopard."
+              <a
+                href="https://nationalzoo.si.edu/animals/clouded-leopard"
+                target="_blank"
+                rel="noopener"
+                >nationalzoo.si.edu</a
+              >
+            </li>
+            <li>
+              National Geographic. "Clouded Leopard."
+              <a
+                href="https://www.nationalgeographic.com/animals/mammals/facts/clouded-leopard"
+                target="_blank"
+                rel="noopener"
+                >nationalgeographic.com</a
+              >
+            </li>
+            <li>
+              Panthera. "Clouded Leopard."
+              <a
+                href="https://panthera.org/cat/clouded-leopard"
+                target="_blank"
+                rel="noopener"
+                >panthera.org</a
+              >
+            </li>
+            <li>
+              Animal Diversity Web (University of Michigan). "Neofelis
+              nebulosa."
+              <a
+                href="https://animaldiversity.org/accounts/Neofelis_nebulosa/"
+                target="_blank"
+                rel="noopener"
+                >animaldiversity.org</a
+              >
+            </li>
+            <li>
+              Global Forest Watch. "Forest Monitoring Designed for Action."
+              <a
+                href="https://www.globalforestwatch.org/"
+                target="_blank"
+                rel="noopener"
+                >globalforestwatch.org</a
+              >
+            </li>
+            <li>
+              Costanza, R., et al. (2014). "Changes in the global value of
+              ecosystem services."
+              <em>Global Environmental Change,</em> 26, 152-158.
+            </li>
+          </ol>
         </div>
       </section>
     </main>
 
-    <div class="audio-hint" role="status" aria-live="polite">
-      Click once to enable ambient jungle audio.
-    </div>
+    <footer class="footer">
+      <div class="footer__inner">
+        <p class="footer__logo">PROJECT CANOPY</p>
+        <p class="footer__tagline">For the forests. For the future.</p>
+        <p class="footer__copy">
+          &copy; 2026 Aiyan Chowdhury. Educational use only.
+          <a href="https://aiyan.tech" target="_blank" rel="noopener"
+            ><i class="fa-solid fa-arrow-up-right-from-square"></i>
+            aiyan.tech</a
+          >
+        </p>
+      </div>
+    </footer>
 
-    <audio id="ambient-audio" loop preload="auto">
-      <source src="/assets/audio/ambiance.wav" type="audio/wav" />
-    </audio>
-    <audio id="select-audio" preload="auto">
-      <source src="/assets/audio/select.wav" type="audio/wav" />
-    </audio>
-
-    <script src="/vendor/gsap/dist/gsap.min.js" defer></script>
-    <script src="/vendor/gsap/dist/ScrollTrigger.min.js" defer></script>
-    <script src="/vendor/lenis/dist/lenis.min.js" defer></script>
-    <script src="./js/script.js" defer></script>
+    <script defer src="/vendor/gsap/dist/gsap.js"></script>
+    <script defer src="/vendor/gsap/dist/ScrollTrigger.js"></script>
+    <script defer src="/vendor/lenis/dist/lenis.min.js"></script>
+    <script defer src="js/script.js"></script>
   </body>
 </html>
