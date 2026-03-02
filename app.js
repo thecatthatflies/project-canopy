@@ -15,11 +15,11 @@ app.use("/assets", express.static(assetsDir));
 app.use("/vendor", express.static(vendorDir));
 
 app.get(/.*/, (req, res) => {
-     res.sendFile(path.join(publicDir, "index.html"));
+  res.sendFile(path.join(publicDir, "index.html"));
 });
 
 const PORT = Number(process.env.PORT) || 3000;
 
 app.listen(PORT, () => {
-     console.log(`visit project canopy's website at http://localhost:${PORT}`);
+  console.log(`visit project canopy's website at http://localhost:${PORT}`);
 });
