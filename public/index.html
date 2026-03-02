@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Canopy | Immersive Jungle Route</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="icon" href="assets/favicon.jpg" type="image/jpeg" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&family=Merriweather:wght@400;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="/vendor/@fortawesome/fontawesome-free/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body class="audio-locked booting">
+    <div class="boot-loader" role="status" aria-live="polite">
+      <div class="boot-loader__inner">
+        <p class="boot-loader__label">Project Canopy</p>
+        <p class="boot-loader__state" data-loader-state>
+          Initializing rainforest simulation...
+        </p>
+        <div class="boot-loader__track" aria-hidden="true">
+          <span class="boot-loader__bar" data-loader-bar></span>
+        </div>
+      </div>
+    </div>
+
+    <div id="experience" aria-hidden="true">
+      <div class="fallback-bg fallback-bg--back"></div>
+      <div class="fallback-bg fallback-bg--mid"></div>
+      <div class="fallback-bg fallback-bg--front"></div>
+      <div class="fallback-bg fallback-bg--mist"></div>
+      <div class="fallback-bg fallback-bg--glow"></div>
+      <div class="fallback-bg fallback-bg--shadow"></div>
+    </div>
+    <div class="vignette" aria-hidden="true"></div>
+
+    <button
+      class="sound-fab"
+      type="button"
+      aria-pressed="true"
+      aria-label="Toggle ambient sound"
+    >
+      <i class="fa-solid fa-volume-high" aria-hidden="true"></i>
+    </button>
+
+    <aside class="tick-nav" aria-label="Section navigation">
+      <a class="tick-nav__item is-active" href="#entry" aria-label="Perimeter">
+        <span class="tick-nav__line"></span>
+        <span class="tick-nav__text">Perimeter</span>
+      </a>
+      <a class="tick-nav__item" href="#threat" aria-label="Threats">
+        <span class="tick-nav__line"></span>
+        <span class="tick-nav__text">Threats</span>
+      </a>
+      <a class="tick-nav__item" href="#patrol" aria-label="Patrol">
+        <span class="tick-nav__line"></span>
+        <span class="tick-nav__text">Patrol</span>
+      </a>
+      <a class="tick-nav__item" href="#restore" aria-label="Restore">
+        <span class="tick-nav__line"></span>
+        <span class="tick-nav__text">Restore</span>
+      </a>
+      <a class="tick-nav__item" href="#community" aria-label="Community">
+        <span class="tick-nav__line"></span>
+        <span class="tick-nav__text">Community</span>
+      </a>
+      <a class="tick-nav__item" href="#mission" aria-label="Mission">
+        <span class="tick-nav__line"></span>
+        <span class="tick-nav__text">Mission</span>
+      </a>
+    </aside>
+
+    <main>
+      <section class="scene" id="entry">
+        <div class="scene__copy">
+          <p class="scene__index">01 / Perimeter Entry</p>
+          <h1>Step into the canopy route.</h1>
+          <p>
+            Scroll forward to move deeper through the jungle environment and map
+            each ecosystem layer to a real conservation action.
+          </p>
+        </div>
+      </section>
+
+      <section class="scene" id="threat">
+        <div class="scene__copy">
+          <p class="scene__index">02 / Threat Corridor</p>
+          <h2>Identify pressure before populations collapse.</h2>
+          <p>
+            This zone targets poaching routes, fragmented forest edges, and
+            illegal access paths where intervention has highest impact.
+          </p>
+        </div>
+      </section>
+
+      <section class="scene" id="patrol">
+        <div class="scene__copy">
+          <p class="scene__index">03 / Ranger Grid</p>
+          <h2>Deploy rangers where signals spike.</h2>
+          <p>
+            Daily patrol loops and camera intelligence remove traps fast and
+            keep high-risk habitats under constant watch.
+          </p>
+        </div>
+      </section>
+
+      <section class="scene" id="restore">
+        <div class="scene__copy">
+          <p class="scene__index">04 / Corridor Build</p>
+          <h2>Reconnect movement through restored canopy.</h2>
+          <p>
+            Reforested corridors and riparian stabilization enable safer
+            wildlife crossings between isolated habitat blocks.
+          </p>
+        </div>
+      </section>
+
+      <section class="scene" id="community">
+        <div class="scene__copy">
+          <p class="scene__index">05 / Community Alliance</p>
+          <h2>Build local stewardship that lasts.</h2>
+          <p>
+            Conservation success is long-term only when nearby communities are
+            funded, trained, and integrated into protection decisions.
+          </p>
+        </div>
+      </section>
+
+      <section class="scene" id="mission">
+        <div class="scene__copy scene__copy--mission">
+          <p class="scene__index">06 / Mission Desk</p>
+          <h2>Purpose: stabilize clouded leopard populations.</h2>
+          <p>
+            This project exists to expand patrol coverage, restore canopy
+            corridors, and shift high-pressure habitats toward measurable
+            recovery.
+          </p>
+          <div class="mission-actions">
+            <a href="#" class="mission-btn"
+              ><i class="fa-solid fa-donate"></i>Fund Patrol Operations</a
+            >
+            <a href="#" class="mission-btn mission-btn--ghost"
+              ><i class="fa-solid fa-seedling"></i>Support Reforestation</a
+            >
+            <a href="#" class="mission-btn mission-btn--ghost"
+              ><i class="fa-solid fa-users"></i>Back Community Programs</a
+            >
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <div class="audio-hint" role="status" aria-live="polite">
+      Click once to enable ambient jungle audio.
+    </div>
+
+    <audio id="ambient-audio" loop preload="auto">
+      <source src="/assets/audio/ambiance.wav" type="audio/wav" />
+    </audio>
+    <audio id="select-audio" preload="auto">
+      <source src="/assets/audio/select.wav" type="audio/wav" />
+    </audio>
+
+    <script src="/vendor/gsap/dist/gsap.min.js" defer></script>
+    <script src="/vendor/gsap/dist/ScrollTrigger.min.js" defer></script>
+    <script src="/vendor/lenis/dist/lenis.min.js" defer></script>
+    <script src="./js/script.js" defer></script>
+  </body>
+</html>
