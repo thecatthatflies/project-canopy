@@ -230,6 +230,82 @@
     });
   }
 
+  const mapElement = document.querySelector("#range-map");
+  if (mapElement && window.L) {
+    const rangeMap = L.map(mapElement, {
+      zoomControl: true,
+      scrollWheelZoom: false,
+      attributionControl: true,
+    }).setView([19.5, 98], 4);
+
+    L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png", {
+      subdomains: "abcd",
+      maxZoom: 18,
+      attribution: '&copy; OpenStreetMap &copy; CARTO',
+    }).addTo(rangeMap);
+
+    const rangeBoundary = [
+      [28.4, 88.1],
+      [27.5, 94.6],
+      [26.8, 97.6],
+      [24.5, 102.4],
+      [23.8, 104.2],
+      [21.0, 106.0],
+      [17.8, 105.3],
+      [14.0, 103.2],
+      [11.8, 99.5],
+      [7.2, 98.8],
+      [8.0, 95.8],
+      [11.5, 92.8],
+      [18.2, 90.1],
+      [23.3, 88.0],
+    ];
+
+    L.polygon(rangeBoundary, {
+      color: "#d6b25f",
+      weight: 2,
+      opacity: 0.85,
+      fillColor: "#4f7f63",
+      fillOpacity: 0.26,
+      dashArray: "6 4",
+    })
+      .addTo(rangeMap)
+      .bindTooltip("Approximate clouded leopard range", {
+        className: "range-label",
+        sticky: true,
+      });
+
+    const rangePoints = [
+      { name: "Nepal", coords: [27.7, 85.3] },
+      { name: "Bhutan", coords: [27.5, 90.4] },
+      { name: "Northeast India", coords: [26.0, 92.9] },
+      { name: "Bangladesh", coords: [24.1, 90.4] },
+      { name: "Myanmar", coords: [20.8, 96.0] },
+      { name: "Thailand", coords: [16.2, 100.7] },
+      { name: "Laos", coords: [18.2, 103.8] },
+      { name: "Vietnam", coords: [16.4, 107.6] },
+      { name: "Cambodia", coords: [12.8, 104.9] },
+      { name: "Malaysia", coords: [4.3, 102.2] },
+      { name: "Southern China", coords: [24.6, 102.2] },
+    ];
+
+    rangePoints.forEach((point) => {
+      L.circleMarker(point.coords, {
+        radius: 5,
+        color: "#f5d78d",
+        weight: 1.2,
+        fillColor: "#d19a43",
+        fillOpacity: 0.9,
+      })
+        .addTo(rangeMap)
+        .bindTooltip(point.name, {
+          className: "range-label",
+          direction: "top",
+          offset: [0, -4],
+        });
+    });
+  }
+
   gsap.utils.toArray(".range-tag").forEach((tag, i) => {
     gsap.from(tag, {
       y: 10,

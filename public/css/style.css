@@ -1,16 +1,16 @@
 :root {
-  --bg: #fafaf7;
-  --bg-dark: #141a12;
+  --bg: #f8f5ef;
+  --bg-dark: #121712;
   --bg-card: #ffffff;
-  --text: #1a1f16;
-  --text-soft: #4a5240;
-  --text-muted: #7a826f;
-  --accent: #3d6b4f;
-  --accent-light: #5a9e72;
-  --accent-subtle: #e8f0ea;
-  --gold: #b8963e;
-  --border: #d8ddd2;
-  --border-light: #eceee8;
+  --text: #1a1a18;
+  --text-soft: #3f433d;
+  --text-muted: #6f7468;
+  --accent: #325c44;
+  --accent-light: #4d8f66;
+  --accent-subtle: #e8efe8;
+  --gold: #b28a3b;
+  --border: #d9d5cc;
+  --border-light: #e8e5de;
   --font-body: "Inter", system-ui, -apple-system, sans-serif;
   --font-display: "Playfair Display", Georgia, "Times New Roman", serif;
   --radius: 0.5rem;
@@ -39,8 +39,9 @@ body {
   min-height: 100vh;
   color: var(--text);
   font-family: var(--font-body);
+  font-feature-settings: "liga", "kern";
   background: var(--bg);
-  line-height: 1.7;
+  line-height: 1.78;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -72,7 +73,7 @@ a:hover {
   justify-content: space-between;
   padding: 0 2rem;
   height: 3.5rem;
-  background: rgba(250, 250, 247, 0.82);
+  background: rgba(248, 245, 239, 0.84);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-light);
@@ -87,10 +88,10 @@ a:hover {
 
 .nav__logo {
   font-family: var(--font-display);
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.04rem;
+  font-weight: 700;
   color: var(--text);
-  letter-spacing: -0.01em;
+  letter-spacing: 0.03em;
 }
 
 .nav__logo:hover {
@@ -106,11 +107,11 @@ a:hover {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 500;
   color: var(--text-soft);
   text-transform: uppercase;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.09em;
   transition: color 0.2s ease;
   position: relative;
 }
@@ -176,9 +177,9 @@ a:hover {
 
 .hero__eyebrow {
   font-size: 0.72rem;
-  font-weight: 600;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.23em;
   color: rgba(255, 255, 255, 0.7);
   margin-bottom: 1rem;
 }
@@ -187,9 +188,10 @@ a:hover {
   font-family: var(--font-display);
   font-size: clamp(2.6rem, 7vw, 5rem);
   font-weight: 700;
-  line-height: 1.05;
-  letter-spacing: -0.02em;
+  line-height: 1.03;
+  letter-spacing: -0.03em;
   margin-bottom: 1.2rem;
+  text-wrap: balance;
 }
 
 .hero__subtitle {
@@ -326,13 +328,13 @@ a:hover {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.14em;
-  color: var(--accent);
+  color: var(--gold);
   margin-bottom: 0.4rem;
 }
 
 .section__title {
   font-family: var(--font-display);
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-size: clamp(2rem, 4vw, 3rem);
   font-weight: 700;
   line-height: 1.12;
   letter-spacing: -0.015em;
@@ -367,6 +369,25 @@ a:hover {
 .content-block p {
   margin-bottom: 0.9rem;
   color: var(--text-soft);
+  max-width: 70ch;
+}
+
+.section--dark .content-block p,
+.section--dark .content-block li {
+  color: #d9e0d7;
+}
+
+.section--dark .content-block p {
+  font-size: 1.03rem;
+  line-height: 1.8;
+}
+
+.section--dark .content-block em {
+  color: #f2f5ef;
+}
+
+.content-block > h3 {
+  margin-top: 0.25rem;
 }
 
 .content-block p:last-child {
@@ -488,10 +509,38 @@ a:hover {
 }
 
 .range-map {
-  max-width: 640px;
+  width: min(840px, 100%);
+  height: clamp(320px, 48vw, 460px);
   margin: 0 auto;
   border-radius: var(--radius-lg);
-  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
+  overflow: hidden;
+}
+
+.range-map--leaflet .leaflet-control-zoom a {
+  background: #f8f5ef;
+  color: #1d251d;
+  border: none;
+}
+
+.range-map--leaflet .leaflet-control-attribution {
+  background: rgba(18, 23, 18, 0.65);
+  color: #aeb7aa;
+  font-size: 0.65rem;
+}
+
+.range-map--leaflet .leaflet-control-attribution a {
+  color: #d7dfd2;
+}
+
+.leaflet-tooltip.range-label {
+  background: rgba(13, 18, 13, 0.9);
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  color: #f0f4ee;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  padding: 0.3rem 0.45rem;
 }
 
 .section--dark .image-caption {

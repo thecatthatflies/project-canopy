@@ -15,6 +15,12 @@
       rel="stylesheet"
       href="/vendor/@fortawesome/fontawesome-free/css/all.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -273,14 +279,14 @@
         </div>
 
         <div class="map-container">
-          <img
-            class="range-map"
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1e/Clouded_Leopard_distribution.png/500px-Clouded_Leopard_distribution.png"
-            alt="Map showing the geographic range of the clouded leopard across Southeast Asia"
-          />
+          <div
+            id="range-map"
+            class="range-map range-map--leaflet"
+            aria-label="Interactive map showing the clouded leopard range in Southeast Asia"
+          ></div>
           <span class="image-caption"
-            >"Distribution of the clouded leopard." Source: Wikimedia
-            Commons.</span
+            >Interactive map of clouded leopard range across South and
+            Southeast Asia.</span
           >
         </div>
 
@@ -865,6 +871,12 @@
     <script defer src="/vendor/gsap/dist/gsap.js"></script>
     <script defer src="/vendor/gsap/dist/ScrollTrigger.js"></script>
     <script defer src="/vendor/lenis/dist/lenis.min.js"></script>
+    <script
+      defer
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
     <script defer src="js/script.js"></script>
   </body>
 </html>
