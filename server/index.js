@@ -32,4 +32,13 @@ app.get(/.*/, (req, res) => {
      res.sendFile(path.join(publicDir, "index.html"));
 });
 
+// For local development: start server if this file is run directly
+if (import.meta.url === `file://${process.argv[1]}`) {
+     const PORT = Number(process.env.PORT) || 3000;
+     app.listen(PORT, () => {
+          console.log(`visit project canopy's website at http://localhost:${PORT}`);
+     });
+}
+
+// Export for Vercel serverless functions
 export default app;

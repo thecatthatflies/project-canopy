@@ -5,9 +5,9 @@
   "license": "ISC",
   "author": "",
   "type": "module",
-  "main": "app.js",
+  "main": "server/index.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "node server/index.js",
     "format": "prettier --write ."
   },
   "dependencies": {
