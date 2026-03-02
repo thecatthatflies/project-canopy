@@ -1,11 +1,15 @@
 import express from "express";
 import path from "path";
+import { fileURLToPath } from "url";
 
 const app = express();
-const PORT = 3000;
-const publicDir = path.join(process.cwd(), "public");
-const assetsDir = path.join(process.cwd(), "assets");
-const vendorDir = path.join(process.cwd(), "node_modules");
+const PORT = Number(process.env.PORT) || 3000;
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const rootDir = path.resolve(__dirname, "..");
+const publicDir = path.join(rootDir, "public");
+const assetsDir = path.join(rootDir, "assets");
+const vendorDir = path.join(rootDir, "node_modules");
 const pages = {
   "/": path.join(publicDir, "index.html"),
 };
