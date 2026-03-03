@@ -238,11 +238,14 @@
       attributionControl: true,
     }).setView([19.5, 98], 4);
 
-    L.tileLayer("https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png", {
-      subdomains: "abcd",
-      maxZoom: 18,
-      attribution: '&copy; OpenStreetMap &copy; CARTO',
-    }).addTo(rangeMap);
+    L.tileLayer(
+      "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
+      {
+        subdomains: "abcd",
+        maxZoom: 18,
+        attribution: "&copy; OpenStreetMap &copy; CARTO",
+      },
+    ).addTo(rangeMap);
 
     const rangeBoundary = [
       [28.4, 88.1],

@@ -21,23 +21,23 @@ app.use("/vendor", express.static(nodeModulesDir));
 
 // Serve FontAwesome and other vendor packages with proper paths
 app.use(
-     "/vendor/@fortawesome",
-     express.static(path.join(nodeModulesDir, "@fortawesome"))
+  "/vendor/@fortawesome",
+  express.static(path.join(nodeModulesDir, "@fortawesome")),
 );
 app.use("/vendor/gsap", express.static(path.join(nodeModulesDir, "gsap")));
 app.use("/vendor/lenis", express.static(path.join(nodeModulesDir, "lenis")));
 
 // SPA fallback - serve index.html for all routes
 app.get(/.*/, (req, res) => {
-     res.sendFile(path.join(publicDir, "index.html"));
+  res.sendFile(path.join(publicDir, "index.html"));
 });
 
 // For local development: start server if this file is run directly
 if (import.meta.url === `file://${process.argv[1]}`) {
-     const PORT = Number(process.env.PORT) || 3000;
-     app.listen(PORT, () => {
-          console.log(`visit project canopy's website at http://localhost:${PORT}`);
-     });
+  const PORT = Number(process.env.PORT) || 3000;
+  app.listen(PORT, () => {
+    console.log(`visit project canopy's website at http://localhost:${PORT}`);
+  });
 }
 
 // Export for Vercel serverless functions
