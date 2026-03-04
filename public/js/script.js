@@ -1,17 +1,336 @@
 (function () {
   "use strict";
 
+  const mapElement = document.querySelector("#range-map");
+  const LEAFLET_STYLE_SOURCES = [
+    {
+      href: "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css",
+      integrity: "sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=",
+    },
+    {
+      href: "https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.css",
+      integrity: "sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=",
+    },
+  ];
+  const LEAFLET_SCRIPT_SOURCES = [
+    {
+      src: "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js",
+      integrity: "sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=",
+    },
+    {
+      src: "https://cdn.jsdelivr.net/npm/leaflet@1.9.4/dist/leaflet.js",
+      integrity: "sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=",
+    },
+  ];
+
+  let leafletStylePromise;
+  let leafletLoadPromise;
+  let rangeMapInstance;
+
+  function initRangeMap() {
+    if (
+      !mapElement ||
+      !window.L ||
+      mapElement.dataset.mapInitialized === "true"
+    ) {
+      return;
+    }
+
+    const rangeMap = L.map(mapElement, {
+      zoomControl: true,
+      scrollWheelZoom: false,
+      attributionControl: true,
+    });
+    rangeMapInstance = rangeMap;
+
+    L.tileLayer(
+      "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
+      {
+        subdomains: "abcd",
+        maxZoom: 18,
+        attribution: "&copy; OpenStreetMap &copy; CARTO",
+      },
+    ).addTo(rangeMap);
+
+    const rangeBoundary = [
+      [28.4, 88.1],
+      [27.5, 94.6],
+      [26.8, 97.6],
+      [24.5, 102.4],
+      [23.8, 104.2],
+      [21.0, 106.0],
+      [17.8, 105.3],
+      [14.0, 103.2],
+      [11.8, 99.5],
+      [7.2, 98.8],
+      [8.0, 95.8],
+      [11.5, 92.8],
+      [18.2, 90.1],
+      [23.3, 88.0],
+    ];
+
+    rangeMap.fitBounds(rangeBoundary, { padding: [24, 24] });
+
+    mapElement.dataset.mapInitialized = "true";
+
+    L.polygon(rangeBoundary, {
+      color: "#d6b25f",
+      weight: 2,
+      opacity: 0.85,
+      fillColor: "#4f7f63",
+      fillOpacity: 0.26,
+      dashArray: "6 4",
+    })
+      .addTo(rangeMap)
+      .bindTooltip("Approximate clouded leopard range", {
+        className: "range-label",
+        sticky: true,
+      });
+
+    const rangePoints = [
+      { name: "Nepal", coords: [27.7, 85.3] },
+      { name: "Bhutan", coords: [27.5, 90.4] },
+      { name: "Northeast India", coords: [26.0, 92.9] },
+      { name: "Bangladesh", coords: [24.1, 90.4] },
+      { name: "Myanmar", coords: [20.8, 96.0] },
+      { name: "Thailand", coords: [16.2, 100.7] },
+      { name: "Laos", coords: [18.2, 103.8] },
+      { name: "Vietnam", coords: [16.4, 107.6] },
+      { name: "Cambodia", coords: [12.8, 104.9] },
+      { name: "Malaysia", coords: [4.3, 102.2] },
+      { name: "Southern China", coords: [24.6, 102.2] },
+    ];
+
+    rangePoints.forEach((point) => {
+      L.circleMarker(point.coords, {
+        radius: 5,
+        color: "#f5d78d",
+        weight: 1.2,
+        fillColor: "#d19a43",
+        fillOpacity: 0.9,
+      })
+        .addTo(rangeMap)
+        .bindTooltip(point.name, {
+          className: "range-label",
+          direction: "top",
+          offset: [0, -4],
+        });
+    });
+
+    requestAnimationFrame(() => rangeMap.invalidateSize());
+    setTimeout(() => rangeMap.invalidateSize(), 250);
+    window.addEventListener("resize", () => rangeMap.invalidateSize());
+
+    if ("IntersectionObserver" in window) {
+      const mapVisibilityObserver = new IntersectionObserver(
+        (entries, observer) => {
+          const isVisible = entries.some((entry) => entry.isIntersecting);
+          if (!isVisible) {
+            return;
+          }
+          rangeMap.invalidateSize();
+          observer.disconnect();
+        },
+        { threshold: 0.2 },
+      );
+      mapVisibilityObserver.observe(mapElement);
+    }
+  }
+
+  function loadLeafletFromSource(source) {
+    return new Promise((resolve, reject) => {
+      const leafletScript = document.createElement("script");
+      leafletScript.src = source.src;
+      leafletScript.crossOrigin = "";
+      leafletScript.integrity = source.integrity;
+      leafletScript.addEventListener(
+        "load",
+        () => {
+          if (window.L) {
+            resolve();
+            return;
+          }
+          reject(
+            new Error(`Leaflet loaded from ${source.src} without window.L`),
+          );
+        },
+        { once: true },
+      );
+      leafletScript.addEventListener(
+        "error",
+        () => {
+          leafletScript.remove();
+          reject(new Error(`Failed to load Leaflet from ${source.src}`));
+        },
+        { once: true },
+      );
+      document.head.appendChild(leafletScript);
+    });
+  }
+
+  function loadLeafletStyleFromSource(source) {
+    return new Promise((resolve, reject) => {
+      const leafletStyle = document.createElement("link");
+      leafletStyle.rel = "stylesheet";
+      leafletStyle.href = source.href;
+      leafletStyle.crossOrigin = "";
+      leafletStyle.integrity = source.integrity;
+      leafletStyle.addEventListener("load", () => resolve(), { once: true });
+      leafletStyle.addEventListener(
+        "error",
+        () => {
+          leafletStyle.remove();
+          reject(
+            new Error(`Failed to load Leaflet styles from ${source.href}`),
+          );
+        },
+        { once: true },
+      );
+      document.head.appendChild(leafletStyle);
+    });
+  }
+
+  async function ensureLeafletStylesLoaded() {
+    if (document.querySelector('link[href*="leaflet.css"]')) {
+      return;
+    }
+
+    if (!leafletStylePromise) {
+      leafletStylePromise = (async () => {
+        let lastError;
+
+        for (const source of LEAFLET_STYLE_SOURCES) {
+          try {
+            await loadLeafletStyleFromSource(source);
+            return;
+          } catch (error) {
+            lastError = error;
+          }
+        }
+
+        throw lastError || new Error("Failed to load Leaflet styles.");
+      })();
+    }
+
+    try {
+      await leafletStylePromise;
+    } finally {
+      if (!document.querySelector('link[href*="leaflet.css"]')) {
+        leafletStylePromise = undefined;
+      }
+    }
+  }
+
+  async function ensureLeafletLoaded() {
+    await ensureLeafletStylesLoaded();
+
+    if (window.L) {
+      return;
+    }
+
+    if (!leafletLoadPromise) {
+      leafletLoadPromise = (async () => {
+        let lastError;
+
+        for (const source of LEAFLET_SCRIPT_SOURCES) {
+          try {
+            await loadLeafletFromSource(source);
+            return;
+          } catch (error) {
+            lastError = error;
+          }
+        }
+
+        throw lastError || new Error("Failed to load Leaflet.");
+      })();
+    }
+
+    try {
+      await leafletLoadPromise;
+    } finally {
+      if (!window.L) {
+        leafletLoadPromise = undefined;
+      }
+    }
+  }
+
+  function renderMapError() {
+    if (!mapElement || mapElement.dataset.mapInitialized === "true") {
+      return;
+    }
+
+    mapElement.classList.add("range-map--error");
+    mapElement.innerHTML =
+      '<p class="range-map__error">Interactive map unavailable right now.</p>';
+  }
+
+  async function ensureLeafletAndInit() {
+    if (!mapElement) {
+      return;
+    }
+
+    try {
+      await ensureLeafletLoaded();
+      initRangeMap();
+    } catch (error) {
+      console.error(error);
+      renderMapError();
+    }
+  }
+
+  function bootstrapRangeMapWhenVisible() {
+    if (!mapElement || mapElement.dataset.mapBootstrapRequested === "true") {
+      return;
+    }
+
+    const startBootstrap = () => {
+      if (mapElement.dataset.mapBootstrapRequested === "true") {
+        return;
+      }
+      mapElement.dataset.mapBootstrapRequested = "true";
+      void ensureLeafletAndInit();
+    };
+
+    if (!("IntersectionObserver" in window)) {
+      startBootstrap();
+      return;
+    }
+
+    const bootstrapObserver = new IntersectionObserver(
+      (entries, observer) => {
+        const isNearViewport = entries.some((entry) => entry.isIntersecting);
+        if (!isNearViewport) {
+          return;
+        }
+        observer.disconnect();
+        startBootstrap();
+      },
+      {
+        rootMargin: "350px 0px",
+        threshold: 0.01,
+      },
+    );
+
+    bootstrapObserver.observe(mapElement);
+  }
+
+  bootstrapRangeMapWhenVisible();
+
+  if (
+    typeof window.gsap === "undefined" ||
+    typeof window.ScrollTrigger === "undefined" ||
+    typeof window.Lenis === "undefined"
+  ) {
+    return;
+  }
+
+  gsap.registerPlugin(ScrollTrigger);
+
   const lenis = new Lenis({
     duration: 1.15,
     easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
     smoothWheel: true,
   });
-
-  function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-  }
-  requestAnimationFrame(raf);
 
   lenis.on("scroll", ScrollTrigger.update);
   gsap.ticker.add((time) => lenis.raf(time * 1000));
@@ -218,140 +537,20 @@
   const mapImg = document.querySelector(".range-map");
   if (mapImg) {
     gsap.from(mapImg, {
-      scale: 0.95,
+      y: 20,
       opacity: 0,
       duration: 0.8,
       ease: "power3.out",
+      onComplete: () => rangeMapInstance?.invalidateSize(),
       scrollTrigger: {
         trigger: mapImg,
         start: "top 85%",
         toggleActions: "play none none none",
+        onEnter: () => rangeMapInstance?.invalidateSize(),
+        onRefresh: () => rangeMapInstance?.invalidateSize(),
       },
     });
   }
-
-  const mapElement = document.querySelector("#range-map");
-
-  function initRangeMap() {
-    if (!mapElement || !window.L || mapElement.dataset.mapInitialized === "true") {
-      return;
-    }
-
-    const rangeMap = L.map(mapElement, {
-      zoomControl: true,
-      scrollWheelZoom: false,
-      attributionControl: true,
-    }).setView([19.5, 98], 4);
-
-    mapElement.dataset.mapInitialized = "true";
-
-    L.tileLayer(
-      "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
-      {
-        subdomains: "abcd",
-        maxZoom: 18,
-        attribution: "&copy; OpenStreetMap &copy; CARTO",
-      },
-    ).addTo(rangeMap);
-
-    const rangeBoundary = [
-      [28.4, 88.1],
-      [27.5, 94.6],
-      [26.8, 97.6],
-      [24.5, 102.4],
-      [23.8, 104.2],
-      [21.0, 106.0],
-      [17.8, 105.3],
-      [14.0, 103.2],
-      [11.8, 99.5],
-      [7.2, 98.8],
-      [8.0, 95.8],
-      [11.5, 92.8],
-      [18.2, 90.1],
-      [23.3, 88.0],
-    ];
-
-    L.polygon(rangeBoundary, {
-      color: "#d6b25f",
-      weight: 2,
-      opacity: 0.85,
-      fillColor: "#4f7f63",
-      fillOpacity: 0.26,
-      dashArray: "6 4",
-    })
-      .addTo(rangeMap)
-      .bindTooltip("Approximate clouded leopard range", {
-        className: "range-label",
-        sticky: true,
-      });
-
-    const rangePoints = [
-      { name: "Nepal", coords: [27.7, 85.3] },
-      { name: "Bhutan", coords: [27.5, 90.4] },
-      { name: "Northeast India", coords: [26.0, 92.9] },
-      { name: "Bangladesh", coords: [24.1, 90.4] },
-      { name: "Myanmar", coords: [20.8, 96.0] },
-      { name: "Thailand", coords: [16.2, 100.7] },
-      { name: "Laos", coords: [18.2, 103.8] },
-      { name: "Vietnam", coords: [16.4, 107.6] },
-      { name: "Cambodia", coords: [12.8, 104.9] },
-      { name: "Malaysia", coords: [4.3, 102.2] },
-      { name: "Southern China", coords: [24.6, 102.2] },
-    ];
-
-    rangePoints.forEach((point) => {
-      L.circleMarker(point.coords, {
-        radius: 5,
-        color: "#f5d78d",
-        weight: 1.2,
-        fillColor: "#d19a43",
-        fillOpacity: 0.9,
-      })
-        .addTo(rangeMap)
-        .bindTooltip(point.name, {
-          className: "range-label",
-          direction: "top",
-          offset: [0, -4],
-        });
-    });
-
-    requestAnimationFrame(() => rangeMap.invalidateSize());
-    setTimeout(() => rangeMap.invalidateSize(), 250);
-    window.addEventListener("resize", () => rangeMap.invalidateSize());
-  }
-
-  function ensureLeafletAndInit() {
-    if (!mapElement) {
-      return;
-    }
-
-    if (window.L) {
-      initRangeMap();
-      return;
-    }
-
-    const existingLeafletScript = document.querySelector(
-      'script[src*="leaflet"]',
-    );
-
-    if (existingLeafletScript) {
-      existingLeafletScript.addEventListener("load", initRangeMap, {
-        once: true,
-      });
-      return;
-    }
-
-    const leafletScript = document.createElement("script");
-    leafletScript.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
-    leafletScript.defer = true;
-    leafletScript.crossOrigin = "";
-    leafletScript.integrity =
-      "sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=";
-    leafletScript.addEventListener("load", initRangeMap, { once: true });
-    document.head.appendChild(leafletScript);
-  }
-
-  ensureLeafletAndInit();
 
   gsap.utils.toArray(".range-tag").forEach((tag, i) => {
     gsap.from(tag, {
@@ -378,6 +577,34 @@
       scrollTrigger: {
         trigger: li,
         start: "top 92%",
+        toggleActions: "play none none none",
+      },
+    });
+  });
+
+  gsap.utils.toArray(".chart-container").forEach((chart) => {
+    gsap.from(chart, {
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: chart,
+        start: "top 88%",
+        toggleActions: "play none none none",
+      },
+    });
+  });
+
+  gsap.utils.toArray(".chart-row").forEach((row) => {
+    gsap.from(row, {
+      y: 30,
+      opacity: 0,
+      duration: 0.8,
+      ease: "power3.out",
+      scrollTrigger: {
+        trigger: row,
+        start: "top 88%",
         toggleActions: "play none none none",
       },
     });

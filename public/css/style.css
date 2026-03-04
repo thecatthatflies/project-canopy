@@ -4,11 +4,11 @@
   --bg-card: #ffffff;
   --text: #1a1a18;
   --text-soft: #3f433d;
-  --text-muted: #6f7468;
-  --accent: #325c44;
-  --accent-light: #4d8f66;
-  --accent-subtle: #e8efe8;
-  --gold: #b28a3b;
+  --text-muted: #62685e;
+  --accent: #2d6a4f;
+  --accent-light: #52b788;
+  --accent-subtle: #e1f0e5;
+  --gold: #40916c;
   --border: #d9d5cc;
   --border-light: #e8e5de;
   --font-body: "Inter", system-ui, -apple-system, sans-serif;
@@ -220,8 +220,8 @@ a:hover {
 }
 
 .hero__cta:hover {
-  background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.5);
+  background: rgba(82, 183, 136, 0.18);
+  border-color: rgba(82, 183, 136, 0.5);
   color: #fff;
   transform: translateY(-1px);
 }
@@ -282,7 +282,7 @@ a:hover {
     .timeline-visual
   ):not(.funding-table-wrapper):not(.success-methods):not(.map-container):not(
     .range-countries
-  ) {
+  ):not(.chart-row) {
   width: var(--container);
   margin-left: auto;
   margin-right: auto;
@@ -377,6 +377,10 @@ a:hover {
   color: #d9e0d7;
 }
 
+.section--dark .content-block a {
+  color: #74c69d;
+}
+
 .section--dark .content-block p {
   font-size: 1.03rem;
   line-height: 1.8;
@@ -438,7 +442,7 @@ a:hover {
   padding: 1.6rem 1rem;
   background: var(--accent-subtle);
   border-radius: var(--radius-lg);
-  border: 1px solid var(--border-light);
+  border: 1px solid rgba(45, 106, 79, 0.12);
 }
 
 .stat-card__number {
@@ -489,9 +493,10 @@ a:hover {
   color: var(--accent);
   font-size: 0.95rem;
   margin-bottom: 0.85rem;
+  border: 1px solid rgba(45, 106, 79, 0.15);
 }
 
-.threat-card h4 {
+.threat-card h3 {
   font-size: 1.05rem;
   margin-bottom: 0.5rem;
 }
@@ -516,6 +521,22 @@ a:hover {
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.28);
   overflow: hidden;
+}
+
+.range-map--error {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.16);
+}
+
+.range-map__error {
+  max-width: 30ch;
+  margin: 0;
+  color: #d6dfd2;
+  font-size: 0.85rem;
+  line-height: 1.45;
 }
 
 .range-map--leaflet .leaflet-control-zoom a {
@@ -602,10 +623,10 @@ a:hover {
   font-weight: 700;
   color: var(--accent);
   margin-bottom: 0.4rem;
-  opacity: 0.35;
+  opacity: 1;
 }
 
-.goal-card h4 {
+.goal-card h3 {
   font-size: 0.95rem;
   margin-bottom: 0.35rem;
 }
@@ -678,7 +699,7 @@ a:hover {
   margin-bottom: 0.5rem;
 }
 
-.timeline-phase h4 {
+.timeline-phase h3 {
   font-family: var(--font-display);
   font-size: 1.2rem;
   margin-bottom: 0.6rem;
@@ -788,7 +809,7 @@ a:hover {
   margin-bottom: 0.85rem;
 }
 
-.success-card h4 {
+.success-card h3 {
   font-size: 1rem;
   margin-bottom: 0.5rem;
 }
@@ -838,6 +859,9 @@ a:hover {
 }
 
 .sources-list a {
+  color: #74c69d;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
   word-break: break-all;
 }
 
@@ -869,7 +893,94 @@ a:hover {
 
 .footer__copy {
   font-size: 0.72rem;
-  color: #5a6250;
+  color: #9aa793;
+}
+
+.footer__copy a {
+  color: #95d5b2;
+  text-decoration: underline;
+  text-underline-offset: 0.14em;
+}
+
+.chart-container {
+  margin-bottom: 2.4rem;
+}
+
+.chart-container h3 {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.chart-container h3 i {
+  color: var(--accent);
+  margin-right: 0.35rem;
+  font-size: 1.05rem;
+}
+
+.chart-container--dark h3 i {
+  color: var(--accent-light);
+}
+
+.chart-desc {
+  font-size: 0.88rem;
+  color: var(--text-soft);
+  max-width: 65ch;
+  margin-bottom: 1rem;
+  line-height: 1.6;
+}
+
+.chart-desc--dark {
+  color: #b0b8a8;
+}
+
+.chart-wrapper {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  padding: 1.2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+}
+
+.section--dark .chart-wrapper {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.chart-wrapper--doughnut {
+  height: 340px;
+}
+
+.chart-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  width: var(--container);
+  margin: 0 auto 2.4rem;
+}
+
+.chart-row .chart-container {
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .chart-row {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-wrapper {
+    height: 280px;
+  }
+
+  .chart-wrapper--doughnut {
+    height: 310px;
+  }
 }
 
 .reveal {

@@ -3,22 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Project Canopy is a science-backed recovery plan to protect clouded leopards and restore connected forest habitat across Southeast Asia."
+    />
     <title>PROJECT CANOPY - Clouded Leopard Recovery Plan</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link rel="icon" href="assets/favicon.svg" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-      crossorigin=""
-    />
+    <link rel="preload" as="image" href="/assets/images/leopard.jpg" />
+    <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css" />
+    <link rel="stylesheet" href="vendor/lenis/lenis.css" />
     <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
@@ -70,13 +65,14 @@
           <h3>What Is Biodiversity?</h3>
           <p>
             Biodiversity is the structural variation of life within an
-            ecosystem. It includes genetic diversity within species, species
+            ecosystem. It encompasses genetic diversity within species, species
             diversity within communities, and ecosystem diversity across
-            landscapes. High biodiversity increases stability. Energy flow
-            remains regulated, predator-prey relationships remain balanced, and
-            ecosystem services like carbon storage and water filtration keep
-            functioning properly. When biodiversity declines, resilience
-            declines. Species loss destabilizes interconnected systems.
+            landscapes. High biodiversity strengthens stability. Energy flow
+            stays regulated, predator-prey relationships remain balanced, and
+            ecosystem services like carbon storage and water filtration
+            continue to function properly. When biodiversity declines,
+            resilience follows. The loss of even a single species can
+            destabilize tightly interconnected systems.
           </p>
         </div>
 
@@ -85,6 +81,10 @@
             <img
               src="/assets/images/leopard.jpg"
               alt="A clouded leopard resting on a mossy tree branch in a tropical forest"
+              loading="lazy"
+              decoding="async"
+              width="1024"
+              height="1024"
             />
             <span class="image-caption"
               >Clouded leopard (<em>Neofelis nebulosa</em>) in its natural
@@ -96,18 +96,19 @@
             <p>
               The clouded leopard (<em>Neofelis nebulosa</em>) is a medium-sized
               wild cat native to the dense tropical and subtropical forests of
-              Southeast Asia. Named for the large, cloud-shaped blotches on its
-              coat, it is the smallest of the "big cats" and one of the most
-              elusive. Adults weigh between 11 and 23 kg (25-50 lb) and measure
-              roughly 70-105 cm in body length, with a tail nearly as long as
-              their body.
+              Southeast Asia. Named for the large, cloud-shaped markings on its
+              coat, it is the smallest of the so-called "big cats" and among the
+              most elusive. Adults weigh between 11 and 23 kg (roughly 25 to
+              50 lb) and measure about 70 to 105 cm in body length, with a tail
+              nearly as long as their body.
             </p>
             <p>
-              Clouded leopards are exceptional climbers with ankles that rotate
-              backward, allowing them to descend trees headfirst and even hang
-              from branches by their hind feet. They have the longest canine
-              teeth relative to skull size of any living cat, earning them
-              comparisons to the saber-toothed cats of prehistory.
+              Clouded leopards are extraordinary climbers. Their ankles can
+              rotate backward, allowing them to descend trees headfirst and
+              even hang from branches by their hind feet. They also possess the
+              longest canine teeth relative to skull size of any living cat,
+              a trait that has earned them comparisons to the saber-toothed
+              cats of prehistory.
             </p>
           </div>
         </div>
@@ -133,36 +134,44 @@
           </div>
         </div>
 
+        <div class="chart-container">
+          <h3><i class="fa-solid fa-chart-line"></i> Estimated Population Trend</h3>
+          <p class="chart-desc">Wild clouded leopard population estimates have declined steadily over the past two decades, driven primarily by habitat destruction and poaching.</p>
+          <div class="chart-wrapper">
+            <canvas id="populationChart"></canvas>
+          </div>
+        </div>
+
         <div class="content-block">
           <h3><i class="fa-solid fa-tree"></i> Habitat</h3>
           <p>
             Clouded leopards inhabit primary evergreen tropical rainforest,
             seasonally dry forest, and secondary logged forest from the
-            Himalayan foothills to mainland Southeast Asia and Borneo. They
+            Himalayan foothills into mainland Southeast Asia and Borneo. They
             prefer dense canopy cover at elevations up to 2,500 m, where the
-            continuous tree-crown layer allows arboreal movement. Fragmentation
-            caused by logging, agriculture, and road building isolates
-            populations, reduces genetic diversity, and increases human-wildlife
-            conflict.
+            continuous tree-crown layer supports their arboreal lifestyle.
+            Fragmentation caused by logging, agriculture, and road
+            construction isolates populations, reduces genetic diversity, and
+            intensifies human-wildlife conflict.
           </p>
         </div>
 
         <div class="content-block">
           <h3><i class="fa-solid fa-paw"></i> Breeding &amp; Reproduction</h3>
           <p>
-            Clouded leopards reach sexual maturity at approximately two years,
-            with a gestation period of 85-93 days. Litters typically contain 1-5
-            cubs, though 2-3 is most common. Cubs are born blind and helpless,
-            weighing about 140-280 g, and open their eyes at roughly 10 days.
-            They are weaned by five months and begin exploring independently by
-            nine months.
+            Clouded leopards reach sexual maturity at approximately two years
+            of age, with a gestation period of 85 to 93 days. Litters typically
+            contain one to five cubs, though two or three is most common. Cubs
+            are born blind and helpless, weighing about 140 to 280 g, and they
+            open their eyes at roughly ten days old. They are weaned by five
+            months and begin exploring independently around nine months.
           </p>
           <p>
-            Breeding in captivity presents significant challenges: males can be
-            highly aggressive toward unfamiliar females, and pair compatibility
-            must be carefully managed. The Species Survival Plan (SSP) has found
-            that introducing pairs at a young age dramatically improves
-            compatibility and reproductive success.
+            Breeding in captivity presents significant challenges. Males can
+            be highly aggressive toward unfamiliar females, and pair
+            compatibility must be carefully managed. The Species Survival Plan
+            (SSP) has found that introducing pairs at a young age dramatically
+            improves both compatibility and reproductive success.
           </p>
         </div>
 
@@ -170,7 +179,7 @@
           <h3><i class="fa-solid fa-utensils"></i> Predators &amp; Prey</h3>
           <div class="two-col">
             <div>
-              <h4>Prey</h4>
+              <h3>Prey</h3>
               <p>
                 Clouded leopards are opportunistic carnivores. Their diet
                 includes primates (macaques, gibbons, langurs), small deer
@@ -181,7 +190,7 @@
               </p>
             </div>
             <div>
-              <h4>Predators &amp; Competitors</h4>
+              <h3>Predators &amp; Competitors</h3>
               <p>
                 Adult clouded leopards have few natural predators, though
                 tigers, leopards, and dholes may kill them in areas of overlap.
@@ -203,49 +212,61 @@
           </p>
         </div>
 
+        <div class="chart-container">
+          <h3><i class="fa-solid fa-chart-bar"></i> Southeast Asia Tree Cover Loss</h3>
+          <p class="chart-desc">The region has experienced devastating forest loss over the past two decades, directly reducing the habitat available to clouded leopards and other forest-dependent species.</p>
+          <div class="chart-wrapper">
+            <canvas id="deforestationChart"></canvas>
+          </div>
+        </div>
+
         <div class="threat-cards">
           <div class="threat-card">
             <div class="threat-card__icon">
               <i class="fa-solid fa-tree"></i>
             </div>
-            <h4>Habitat Loss &amp; Fragmentation</h4>
+            <h3>Habitat Loss &amp; Fragmentation</h3>
             <p>
-              Southeast Asia has one of the highest deforestation rates
-              globally. Between 2001 and 2019, the region lost over 61 million
-              hectares of tree cover, mostly to palm oil plantations, rubber
-              farming, and logging. This shatters the continuous canopy that
-              clouded leopards rely on for movement and hunting.
+              Southeast Asia has one of the highest deforestation rates on
+              Earth. Between 2001 and 2023, the region lost over 70 million
+              hectares of tree cover, driven largely by palm oil plantations,
+              rubber farming, and industrial logging. This shatters the
+              continuous canopy that clouded leopards depend on for movement
+              and hunting.
             </p>
           </div>
           <div class="threat-card">
             <div class="threat-card__icon">
               <i class="fa-solid fa-crosshairs"></i>
             </div>
-            <h4>Poaching &amp; Illegal Trade</h4>
+            <h3>Poaching &amp; Illegal Trade</h3>
             <p>
               Clouded leopard pelts, bones, and teeth are sold in illegal
-              wildlife markets. Their parts are used in traditional medicine and
-              as luxury decorative items. Snares set for other animals also
-              incidentally kill or injure clouded leopards.
+              wildlife markets across the region. Their parts are used in
+              traditional medicine and as luxury decorative items. Snares
+              originally set for other animals also frequently injure or kill
+              clouded leopards as bycatch, compounding the direct toll of
+              targeted poaching.
             </p>
           </div>
           <div class="threat-card">
             <div class="threat-card__icon">
               <i class="fa-solid fa-building"></i>
             </div>
-            <h4>Human Encroachment</h4>
+            <h3>Human Encroachment</h3>
             <p>
-              As human settlements expand into forested areas, clouded leopards
-              are pushed into smaller, more isolated patches. They may prey on
-              livestock, leading to retaliatory killings. Roads fragment habitat
-              corridors and increase roadkill mortality.
+              As human settlements push deeper into forested areas, clouded
+              leopards are confined to smaller, more isolated patches. When
+              they prey on livestock, retaliatory killings often follow. Roads
+              fragment vital habitat corridors and increase roadkill mortality,
+              further shrinking already limited territory.
             </p>
           </div>
           <div class="threat-card">
             <div class="threat-card__icon">
               <i class="fa-solid fa-temperature-arrow-up"></i>
             </div>
-            <h4>Climate Change</h4>
+            <h3>Climate Change</h3>
             <p>
               Rising temperatures and shifting rainfall patterns alter forest
               composition and prey availability. Montane forests serve as
@@ -266,22 +287,18 @@
         <div class="content-block">
           <p>
             The clouded leopard's range extends from the eastern Himalayas
-            through mainland Southeast Asia to southern China. Historically, the
-            species was found across a vast swathe of tropical and subtropical
-            forest; today, populations are fragmented and confined to
+            through mainland Southeast Asia to southern China. Historically,
+            the species occupied a broad swathe of tropical and subtropical
+            forest. Today, however, populations are fragmented and confined to
             increasingly isolated forest blocks. The Sunda clouded leopard (<em
               >Neofelis diardi</em
             >), found on Borneo and Sumatra, was recognized as a separate
-            species in 2006.
+            species in 2006 based on molecular and morphological evidence.
           </p>
         </div>
 
         <div class="map-container">
-          <div
-            id="range-map"
-            class="range-map range-map--leaflet"
-            aria-label="Interactive map showing the clouded leopard range in Southeast Asia"
-          ></div>
+          <div id="range-map" class="range-map range-map--leaflet"></div>
           <span class="image-caption"
             >Interactive map of clouded leopard range across South and Southeast
             Asia.</span
@@ -345,7 +362,7 @@
         <div class="goals-grid">
           <div class="goal-card">
             <div class="goal-card__number">01</div>
-            <h4>Protect Habitat</h4>
+            <h3>Protect Habitat</h3>
             <p>
               Secure and restore 50,000 km² of connected forest across the
               species' core range.
@@ -353,7 +370,7 @@
           </div>
           <div class="goal-card">
             <div class="goal-card__number">02</div>
-            <h4>Eliminate Poaching</h4>
+            <h3>Eliminate Poaching</h3>
             <p>
               Reduce poaching-related mortality by 90% through enforcement and
               community engagement.
@@ -361,7 +378,7 @@
           </div>
           <div class="goal-card">
             <div class="goal-card__number">03</div>
-            <h4>Sustain Genetic Diversity</h4>
+            <h3>Sustain Genetic Diversity</h3>
             <p>
               Maintain a genetically viable captive population of 120+ breeding
               individuals across AZA-accredited facilities.
@@ -369,7 +386,7 @@
           </div>
           <div class="goal-card">
             <div class="goal-card__number">04</div>
-            <h4>Engage Communities</h4>
+            <h3>Engage Communities</h3>
             <p>
               Build local economies that benefit from leopard conservation,
               reducing human-wildlife conflict.
@@ -377,7 +394,7 @@
           </div>
           <div class="goal-card">
             <div class="goal-card__number">05</div>
-            <h4>Advance Research</h4>
+            <h3>Advance Research</h3>
             <p>
               Deploy camera-trap networks and GPS collaring to map population
               dynamics and habitat use.
@@ -400,11 +417,11 @@
             funding ranger patrols, and expanding national parks in key
             clouded-leopard corridors such as the Tenasserim Hills
             (Thailand-Myanmar border) and the forests of northern Laos. Beyond
-            protection, active reforestation through native dipterocarp and fig
+            protection, active reforestation with native dipterocarp and fig
             species plantings will rebuild canopy bridges between isolated
             fragments. Wildlife corridors at least 2 km wide should connect
             reserves, allowing gene flow and natural dispersal. Because clouded
-            leopards are arboreal, these corridors must emphasize tall,
+            leopards are arboreal, these corridors must prioritize tall,
             continuous canopy rather than simple ground-level plantings.
           </p>
         </div>
@@ -414,29 +431,30 @@
           <p>
             Effective anti-poaching requires a layered approach. Trained ranger
             units equipped with SMART (Spatial Monitoring and Reporting Tool)
-            technology will patrol high-risk zones. Intelligence networks will
-            target the criminal syndicates that drive the illegal wildlife
-            trade. Community informant programs offering financial incentives
-            for information leading to arrests will deter local poaching.
-            Penalties for wildlife trafficking must be strengthened:
-            international cooperation through CITES enforcement is essential to
-            shut down cross-border trade.
+            technology patrol high-risk zones on a rotating basis.
+            Intelligence networks target the criminal syndicates that drive the
+            illegal wildlife trade. Community informant programs offering
+            financial incentives for information leading to arrests also help
+            deter local poaching. At the same time, penalties for wildlife
+            trafficking must be strengthened, and international cooperation
+            through CITES enforcement remains essential to shutting down
+            cross-border trade routes.
           </p>
         </div>
 
         <div class="content-block">
           <h3>Captive Breeding &amp; Genetic Management</h3>
           <p>
-            The Clouded Leopard SSP coordinates breeding across approximately 70
-            clouded leopards in North American zoos. Because male aggression is
-            a serious barrier, the SSP now pairs animals before 12 months of age
-            and houses pairs in large, enriched enclosures with climbing
+            The Clouded Leopard SSP coordinates breeding across approximately
+            70 clouded leopards in North American zoos. Because male aggression
+            is a serious barrier, the SSP now pairs animals before 12 months
+            of age and houses them in large, enriched enclosures with climbing
             structures that mimic natural canopy. Artificial insemination and
             genome banking further safeguard genetic diversity. The long-term
-            goal is to build a self-sustaining captive population that could
-            support reintroduction into restored habitat, a process requiring
-            rigorous behavioral conditioning, soft-release protocols, and
-            post-release monitoring.
+            goal is to build a self-sustaining captive population capable of
+            supporting reintroduction into restored habitat. This process
+            requires rigorous behavioral conditioning, soft-release protocols,
+            and sustained post-release monitoring.
           </p>
         </div>
 
@@ -444,14 +462,15 @@
           <h3>Accounting for Behavior &amp; Ecology</h3>
           <p>
             Any recovery strategy must respect the biology of the species.
-            Clouded leopards are solitary, nocturnal, and primarily arboreal -
-            solutions that assume they will cross open ground (like ground-level
-            wildlife crossings) are inadequate. Corridor design must include
-            continuous canopy and minimize edge effects. Protected areas must be
-            large enough to support viable home ranges (25-50 km² per
-            individual). Breeding programs must pair animals young, provide
-            vertical space, and minimize stress. Loud visitors and concrete
-            enclosures are counterproductive.
+            Clouded leopards are solitary, nocturnal, and primarily arboreal.
+            Solutions that assume they will cross open ground (such as
+            ground-level wildlife crossings) are simply inadequate. Corridor
+            design must include continuous canopy and minimize edge effects.
+            Protected areas must be large enough to support viable home ranges
+            of 25 to 50 km&sup2; per individual. Breeding programs must pair
+            animals young, provide vertical space, and minimize stress. Loud
+            visitor areas and barren concrete enclosures are
+            counterproductive.
           </p>
         </div>
 
@@ -459,18 +478,19 @@
           <h3>Economic Justification</h3>
           <p>
             The estimated cost of this recovery program over 25 years is
-            approximately $260 million, a significant investment. However, the
-            forests that clouded leopards inhabit provide ecosystem services
-            worth tens of billions of dollars annually: carbon sequestration,
-            watershed protection, flood prevention, and non-timber forest
-            products. A landmark 2019 study in <em>Nature</em> valued Southeast
-            Asian tropical forests at approximately $1,500 per hectare per year
-            in ecosystem services. By protecting 50,000 km², this program would
-            conserve roughly $7.5 billion in annual ecosystem value. This
-            represents a return of over $28 for every $1 invested. Beyond
-            economics, the ecotourism potential is substantial: community-based
-            tourism programs in clouded leopard habitat in Borneo already
-            generate significant local income.
+            approximately $260 million, a significant but worthwhile
+            investment. The forests that clouded leopards inhabit provide
+            ecosystem services valued in the tens of billions of dollars each
+            year, including carbon sequestration, watershed protection, flood
+            prevention, and non-timber forest products. Research published in
+            <em>Nature</em> has valued Southeast Asian tropical forests at
+            roughly $1,500 per hectare per year in ecosystem services. By
+            protecting 50,000 km&sup2;, this program would conserve roughly
+            $7.5 billion in annual ecosystem value, representing a return of
+            over $28 for every $1 invested. Beyond economics, the ecotourism
+            potential is substantial. Community-based tourism programs in
+            clouded leopard habitat across Borneo are already generating
+            meaningful local income.
           </p>
         </div>
       </section>
@@ -485,7 +505,7 @@
           <div class="timeline-phase">
             <span class="timeline-phase__marker">Phase I</span>
             <p class="timeline-phase__period">2027-2032</p>
-            <h4>Foundation &amp; Assessment</h4>
+            <h3>Foundation &amp; Assessment</h3>
             <ul>
               <li>
                 Complete range-wide population survey using camera traps and
@@ -508,7 +528,7 @@
           <div class="timeline-phase">
             <span class="timeline-phase__marker">Phase II</span>
             <p class="timeline-phase__period">2033-2040</p>
-            <h4>Active Recovery</h4>
+            <h3>Active Recovery</h3>
             <ul>
               <li>
                 Complete forest corridor plantings connecting 5 major reserves.
@@ -535,7 +555,7 @@
           <div class="timeline-phase">
             <span class="timeline-phase__marker">Phase III</span>
             <p class="timeline-phase__period">2041-2051</p>
-            <h4>Population Growth &amp; Self-Sustaining Ecosystems</h4>
+            <h3>Population Growth &amp; Self-Sustaining Ecosystems</h3>
             <ul>
               <li>Achieve target population of 15,000 wild individuals.</li>
               <li>
@@ -573,6 +593,22 @@
             grants (GEF, CEPF), bilateral aid, carbon-credit programs, and
             private philanthropy.
           </p>
+        </div>
+
+        <div class="chart-row">
+          <div class="chart-container chart-container--dark">
+            <h3><i class="fa-solid fa-chart-pie"></i> Budget Allocation</h3>
+            <div class="chart-wrapper chart-wrapper--doughnut">
+              <canvas id="fundingChart"></canvas>
+            </div>
+          </div>
+          <div class="chart-container chart-container--dark">
+            <h3><i class="fa-solid fa-scale-balanced"></i> Return on Investment</h3>
+            <p class="chart-desc chart-desc--dark">For every $1 invested in clouded leopard habitat conservation, an estimated $28 in ecosystem services is preserved annually.</p>
+            <div class="chart-wrapper">
+              <canvas id="roiChart"></canvas>
+            </div>
+          </div>
         </div>
 
         <div class="funding-table-wrapper">
@@ -680,7 +716,7 @@
             <div class="success-card__icon">
               <i class="fa-solid fa-camera"></i>
             </div>
-            <h4>Camera-Trap Surveys</h4>
+            <h3>Camera-Trap Surveys</h3>
             <p>
               Standardized camera-trap grids across all 15 priority landscapes
               will estimate population density, occupancy rates, and individual
@@ -695,7 +731,7 @@
             <div class="success-card__icon">
               <i class="fa-solid fa-dna"></i>
             </div>
-            <h4>Genetic Monitoring</h4>
+            <h3>Genetic Monitoring</h3>
             <p>
               Non-invasive genetic sampling (fecal DNA, hair snares) will track
               effective population size, inbreeding coefficients, and gene flow
@@ -710,7 +746,7 @@
             <div class="success-card__icon">
               <i class="fa-solid fa-satellite"></i>
             </div>
-            <h4>Habitat Monitoring</h4>
+            <h3>Habitat Monitoring</h3>
             <p>
               Annual satellite imagery analysis will quantify forest cover,
               canopy height, and corridor connectivity using Global Forest Watch
@@ -725,7 +761,7 @@
             <div class="success-card__icon">
               <i class="fa-solid fa-shield-halved"></i>
             </div>
-            <h4>Anti-Poaching Metrics</h4>
+            <h3>Anti-Poaching Metrics</h3>
             <p>
               Track patrol effort (km patrolled), snares removed, arrests made,
               and prosecution rates. Compare poaching incident trends
@@ -740,7 +776,7 @@
             <div class="success-card__icon">
               <i class="fa-solid fa-horse"></i>
             </div>
-            <h4>Captive Population Health</h4>
+            <h3>Captive Population Health</h3>
             <p>
               Monitor SSP studbook metrics: births, deaths, genetic diversity
               index, pair compatibility scores, and cub survival rates.
@@ -754,7 +790,7 @@
             <div class="success-card__icon">
               <i class="fa-solid fa-chart-line"></i>
             </div>
-            <h4>Community Impact</h4>
+            <h3>Community Impact</h3>
             <p>
               Survey household income changes, attitudes toward wildlife, and
               ecotourism revenue in buffer-zone communities to ensure local
@@ -847,6 +883,48 @@
               ecosystem services."
               <em>Global Environmental Change,</em> 26, 152-158.
             </li>
+            <li>
+              Hearn, A.J., Ross, J., Brodie, J., et al. (2013). "Insights
+              into the spatial and temporal ecology of the Sunda clouded
+              leopard <em>Neofelis diardi</em>."
+              <em>Raffles Bulletin of Zoology,</em> 61(2), 871-875.
+            </li>
+            <li>
+              Wilting, A., Cord, A., Hearn, A.J., et al. (2010). "Modelling
+              the species distribution of flat-headed cats, bay cats, and
+              clouded leopards in Borneo."
+              <em>Journal of Mammalogy,</em> 91(2), 331-341.
+            </li>
+            <li>
+              Curtis, P.G., Slay, C.M., Harris, N.L., et al. (2018).
+              "Classifying drivers of global forest loss."
+              <em>Science,</em> 361(6407), 1108-1111.
+            </li>
+            <li>
+              Tan, C.K.W., Rocha, D.G., Clements, G.R., et al. (2017).
+              "Habitat use and predicted range for the mainland clouded
+              leopard in Peninsular Malaysia."
+              <em>Biological Conservation,</em> 206, 65-74.
+            </li>
+            <li>
+              TRAFFIC. (2020). "An overview of seizures of clouded leopards
+              and their parts in selected Southeast Asian countries."
+              <a
+                href="https://www.traffic.org"
+                target="_blank"
+                rel="noopener"
+                >traffic.org</a
+              >
+            </li>
+            <li>
+              The Clouded Leopard Project. "Conservation and Research."
+              <a
+                href="https://www.cloudedleopard.org"
+                target="_blank"
+                rel="noopener"
+                >cloudedleopard.org</a
+              >
+            </li>
           </ol>
         </div>
       </section>
@@ -866,28 +944,11 @@
       </div>
     </footer>
 
-    <script
-      defer
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.2/gsap.min.js"
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script
-      defer
-      src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.14.2/ScrollTrigger.min.js"
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
-    <script
-      defer
-      src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js"
-    ></script>
-    <script
-      defer
-      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
-      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
-      crossorigin=""
-    ></script>
+    <script defer src="vendor/gsap/gsap.min.js"></script>
+    <script defer src="vendor/gsap/ScrollTrigger.min.js"></script>
+    <script defer src="vendor/lenis/lenis.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js"></script>
     <script defer src="js/script.js"></script>
+    <script defer src="js/charts.js"></script>
   </body>
 </html>
