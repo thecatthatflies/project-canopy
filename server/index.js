@@ -9,17 +9,16 @@ const rootDir = path.resolve(__dirname, "..");
 const publicDir = path.join(rootDir, "public");
 const assetsDir = path.join(rootDir, "assets");
 const nodeModulesDir = path.join(rootDir, "node_modules");
+const PORT = process.env.PORT || 3000;
 
-// Serve static files from public directory
+if (process.env.NODE_ENV !== "production") {
+
 app.use(express.static(publicDir));
 
-// Serve assets
 app.use("/assets", express.static(assetsDir));
 
-// Serve vendor files (node_modules)
 app.use("/vendor", express.static(nodeModulesDir));
 
-// Serve FontAwesome and other vendor packages with proper paths
 app.use(
   "/vendor/@fortawesome",
   express.static(path.join(nodeModulesDir, "@fortawesome")),
@@ -27,18 +26,25 @@ app.use(
 app.use("/vendor/gsap", express.static(path.join(nodeModulesDir, "gsap")));
 app.use("/vendor/lenis", express.static(path.join(nodeModulesDir, "lenis")));
 
-// SPA fallback - serve index.html for all routes
-app.get(/.*/, (req, res) => {
+app.get("/notes.html", (req, res) => {
+  res.sendFile(path.join(publicDir, "notes.html"));
+});
+
+app.get("/notes", (req, res) => {
+  res.sendFile(path.join(publicDir, "notes.html"));
+});
+
+app.get("/", (req, res) => {
   res.sendFile(path.join(publicDir, "index.html"));
 });
 
-// For local development: start server if this file is run directly
-if (import.meta.url === `file://${process.argv[1]}`) {
-  const PORT = Number(process.env.PORT) || 3000;
+app.use((req, res) => {
+  res.status(404).sendFile(path.join(publicDir, "404.html"));
+});
+
   app.listen(PORT, () => {
     console.log(`visit project canopy's website at http://localhost:${PORT}`);
   });
 }
 
-// Export for Vercel serverless functions
 export default app;
