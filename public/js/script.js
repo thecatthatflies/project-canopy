@@ -231,12 +231,19 @@
   }
 
   const mapElement = document.querySelector("#range-map");
-  if (mapElement && window.L) {
+
+  function initRangeMap() {
+    if (!mapElement || !window.L || mapElement.dataset.mapInitialized === "true") {
+      return;
+    }
+
     const rangeMap = L.map(mapElement, {
       zoomControl: true,
       scrollWheelZoom: false,
       attributionControl: true,
     }).setView([19.5, 98], 4);
+
+    mapElement.dataset.mapInitialized = "true";
 
     L.tileLayer(
       "https://{s}.basemaps.cartocdn.com/light_nolabels/{z}/{x}/{y}{r}.png",
@@ -307,7 +314,44 @@
           offset: [0, -4],
         });
     });
+
+    requestAnimationFrame(() => rangeMap.invalidateSize());
+    setTimeout(() => rangeMap.invalidateSize(), 250);
+    window.addEventListener("resize", () => rangeMap.invalidateSize());
   }
+
+  function ensureLeafletAndInit() {
+    if (!mapElement) {
+      return;
+    }
+
+    if (window.L) {
+      initRangeMap();
+      return;
+    }
+
+    const existingLeafletScript = document.querySelector(
+      'script[src*="leaflet"]',
+    );
+
+    if (existingLeafletScript) {
+      existingLeafletScript.addEventListener("load", initRangeMap, {
+        once: true,
+      });
+      return;
+    }
+
+    const leafletScript = document.createElement("script");
+    leafletScript.src = "https://unpkg.com/leaflet@1.9.4/dist/leaflet.js";
+    leafletScript.defer = true;
+    leafletScript.crossOrigin = "";
+    leafletScript.integrity =
+      "sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=";
+    leafletScript.addEventListener("load", initRangeMap, { once: true });
+    document.head.appendChild(leafletScript);
+  }
+
+  ensureLeafletAndInit();
 
   gsap.utils.toArray(".range-tag").forEach((tag, i) => {
     gsap.from(tag, {

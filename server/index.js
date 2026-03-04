@@ -8,19 +8,10 @@ const __dirname = path.dirname(__filename);
 const rootDir = path.resolve(__dirname, "..");
 const publicDir = path.join(rootDir, "public");
 const assetsDir = path.join(rootDir, "assets");
-const nodeModulesDir = path.join(rootDir, "node_modules");
 const PORT = process.env.PORT || 3000;
 
 app.use(express.static(publicDir));
 app.use("/assets", express.static(assetsDir));
-app.use("/vendor", express.static(nodeModulesDir));
-
-app.use(
-  "/vendor/@fortawesome",
-  express.static(path.join(nodeModulesDir, "@fortawesome")),
-);
-app.use("/vendor/gsap", express.static(path.join(nodeModulesDir, "gsap")));
-app.use("/vendor/lenis", express.static(path.join(nodeModulesDir, "lenis")));
 
 app.get("/notes", (req, res) => {
   res.sendFile(path.join(publicDir, "notes.html"));
