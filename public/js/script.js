@@ -336,15 +336,6 @@
   gsap.ticker.add((time) => lenis.raf(time * 1000));
   gsap.ticker.lagSmoothing(0);
 
-  const nav = document.querySelector(".nav");
-
-  ScrollTrigger.create({
-    start: "top -80",
-    onUpdate: (self) => {
-      nav.classList.toggle("scrolled", self.progress > 0);
-    },
-  });
-
   const hero = document.querySelector(".hero");
   if (hero) {
     gsap.to(".hero__content", {
